@@ -18,10 +18,15 @@ class CreateAccountPage extends StatelessWidget {
 
         const Background(),
 
-        Container(
-          padding: const EdgeInsets.only(left: 30.0, top: 60.0),
-          transformAlignment: Alignment.topLeft,
-          child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
+        GestureDetector(
+          child: Container(
+            padding: const EdgeInsets.only(left: 30.0, top: 60.0),
+            transformAlignment: Alignment.topLeft,
+            child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
 
         Column(
@@ -121,10 +126,13 @@ class CreateAccountPage extends StatelessWidget {
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
-            const PageChangeButton(
+            PageChangeButton(
               width: 140.0,
               height: 50.0,
               text: "Create",
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
