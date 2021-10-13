@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 import './pages/login_page.dart';
 
@@ -23,18 +24,19 @@ class MyApp extends StatelessWidget {
         // Still more slots if we need to add more colors or accents
         colorScheme: const ColorScheme.highContrastLight(
             // Primary green color
-            primary: Color.fromRGBO(125, 205, 172, 1.0),
+          primary: Color.fromRGBO(125, 205, 172, 1.0),
             // Other blue color we were using as accent
-            secondary: Color.fromRGBO(35, 119, 123, 1),
+          secondary: Color.fromRGBO(35, 119, 123, 1),
             // A transparent color
-            background: Color.fromRGBO(1, 1, 1, 0.0),
+          background: Color.fromRGBO(1, 1, 1, 0.0),
             // The Button Color
-            surface: Color.fromRGBO(204, 204, 204, 100)
+          surface: Color.fromRGBO(204, 204, 204, 100),
+            // A solid black Color
+          onBackground: Color.fromRGBO(0, 0, 0, 1),
         ),
 
         // Define the default font family
         fontFamily: 'Montserrat',
-
         // Define the default 'Text Theme'
         // Specifies certain height, and weights
         textTheme: const TextTheme(
@@ -42,10 +44,12 @@ class MyApp extends StatelessWidget {
           headline1: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
           // Smaller Header Font
           headline2: TextStyle(fontSize: 30.0, fontStyle: FontStyle.italic),
+          // Headline font that is underlined
+          headline3: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
           // A smaller body size
           bodyText1: TextStyle(fontSize: 16.0, fontFamily: 'Open Sans'),
           // Slightly larger body size
-          bodyText2: TextStyle(fontSize: 20.0, fontFamily: 'Open Sans'),
+          bodyText2: TextStyle(fontSize: 20.0),
         ),
       ),
 

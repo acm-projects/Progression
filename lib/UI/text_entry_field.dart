@@ -27,7 +27,10 @@ Widget build(BuildContext context) {
       controller: _textController,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
       ),
+      textAlign: TextAlign.center,
+      textAlignVertical: TextAlignVertical.center,
       style: Theme.of(context).textTheme.bodyText2,
     );
   }
