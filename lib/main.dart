@@ -26,11 +26,11 @@ class MyApp extends StatelessWidget {
             // Primary green color
           primary: Color.fromRGBO(255, 236, 138, 1.0),
             // Other blue color we were using as accent
-          secondary: Color.fromRGBO(253, 84, 47, 1.0),
+          secondary: Color.fromRGBO(253, 84, 47, 1),
             // A transparent color
           background: Color.fromRGBO(1, 1, 1, 0.0),
             // The Button Color
-          surface: Color.fromRGBO(255, 236, 138, 1.0),
+          surface: Color.fromRGBO(250, 250, 250, 1),
             // A solid black Color
           onBackground: Color.fromRGBO(0, 0, 0, 1),
         ),
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
           // Headline font that is underlined
           headline3: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
           // A smaller body size
-          bodyText1: TextStyle(fontSize: 16.0, fontFamily: 'Open Sans'),
+          bodyText1: TextStyle(fontSize: 24.0, fontFamily: 'Open Sans'),
           // Slightly larger body size
           bodyText2: TextStyle(fontSize: 20.0),
         ),

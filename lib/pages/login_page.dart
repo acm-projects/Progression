@@ -26,12 +26,13 @@ class LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'It takes 10,000 hours to become a master in something.',
+              ' It takes 10,000 hours to become a master in something.',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1,
+
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
 
             const SizedBox(
               height: 42,
@@ -103,12 +104,11 @@ class LoginPageState extends State<LoginPage> {
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
-            GestureDetector(
-              child: Text(
-                'Create Account',
-                style: Theme.of(context).textTheme.headline3,
-              ),
-              onTap: () {
+            PageChangeButton(
+              width: 140.0,
+              height: 50.0,
+              text: "Create",
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const CreateAccountPage()),

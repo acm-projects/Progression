@@ -24,7 +24,7 @@ class PageChangeButton extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText2,
           ),
-          color: Theme.of(context).colorScheme.surface,
+          color: Theme.of(context).colorScheme.primary,
           padding: EdgeInsets.zero,
         ),
     );
