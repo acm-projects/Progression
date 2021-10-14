@@ -23,6 +23,13 @@ class _TextEntryState extends State<TextEntry> {
 
   @override
 Widget build(BuildContext context) {
+
+    @override
+    void dispose() {
+      _textController.dispose();
+      super.dispose();
+    }
+
     return CupertinoTextField.borderless(
       controller: _textController,
       decoration: BoxDecoration(
@@ -32,6 +39,11 @@ Widget build(BuildContext context) {
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
       style: Theme.of(context).textTheme.bodyText2,
+      onTap: () {
+        if (_textController.text == widget.hint) {
+          _textController.clear();
+        }
+      }
     );
   }
 }
