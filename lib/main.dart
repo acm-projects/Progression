@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
         // Still more slots if we need to add more colors or accents
         colorScheme: const ColorScheme.highContrastLight(
             // Primary green color
-          primary: Color.fromRGBO(125, 205, 172, 1.0),
+          primary: Color.fromRGBO(255, 236, 138, 1.0),
             // Other blue color we were using as accent
-          secondary: Color.fromRGBO(35, 119, 123, 1),
+          secondary: Color.fromRGBO(253, 84, 47, 1.0),
             // A transparent color
           background: Color.fromRGBO(1, 1, 1, 0.0),
             // The Button Color
-          surface: Color.fromRGBO(204, 204, 204, 100),
+          surface: Color.fromRGBO(255, 236, 138, 1.0),
             // A solid black Color
           onBackground: Color.fromRGBO(0, 0, 0, 1),
         ),
