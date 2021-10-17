@@ -22,14 +22,13 @@ class _TextEntryState extends State<TextEntry> {
   }
 
   @override
-Widget build(BuildContext context) {
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 
-    @override
-    void dispose() {
-      _textController.dispose();
-      super.dispose();
-    }
-
+  @override
+  Widget build(BuildContext context) {
     return CupertinoTextField.borderless(
       controller: _textController,
       decoration: BoxDecoration(

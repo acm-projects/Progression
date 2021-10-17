@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-import './pages/login_page.dart';
+import './pages/main_page.dart';
 
 void main () => runApp(const MyApp());
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // Still more slots if we need to add more colors or accents
         colorScheme: const ColorScheme.highContrastLight(
             // Primary green color
-          primary: Color.fromRGBO(255, 236, 138, 1.0),
+          primary: Color.fromRGBO(255, 208, 138, 1.0),
             // Other blue color we were using as accent
           secondary: Color.fromRGBO(253, 84, 47, 1),
             // A transparent color
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
 
       // The page your testing
       // Will eventually be the starting page
-      home: const LoginPage(),
+      home: const MainPage(),
 
     );
   }
