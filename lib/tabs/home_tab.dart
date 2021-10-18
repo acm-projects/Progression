@@ -18,14 +18,51 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
 
     return Stack (
+      alignment: Alignment.center,
+
       children: [
         const Background(),
 
-        SizedBox(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
 
-          child: MakeSwiper(
-            steps: widget.list,
-          ),
+          children: [
+            Text(
+              'Stat Page',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 2,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
+            ),
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width * .8,
+              height: 300,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface
+                      ),
+                  ),
+                  MakeSwiper(steps: widget.list)
+                ],
+              ),
+            )
+          ],
         ),
       ],
     );

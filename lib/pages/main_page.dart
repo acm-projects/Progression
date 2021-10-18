@@ -7,14 +7,14 @@ class MainPage extends StatelessWidget {
 
   static final List<Widget> _list = [
     const HomeTab(list: [Text('Home')],),
-
+    const CalendarTab(),
+    const NewLogTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-
       ),
       child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
