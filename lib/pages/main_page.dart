@@ -14,8 +14,6 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-      ),
       child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             items: const [
