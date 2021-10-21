@@ -34,40 +34,48 @@ class LoginPageState extends State<LoginPage> {
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
 
-            const SizedBox(
-              height: 42,
-              width: 253,
+            Container(
+              decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 42,
+                    width: 253,
 
-              // Might need to add this color if background isn't already transparent
-              // color: Theme.of(context).colorScheme.background,
+                    // Might need to add this color if background isn't already transparent
+                    // color: Theme.of(context).colorScheme.background,
 
-              child: TextEntry(hint: 'Email'),
-            ),
+                    child: TextEntry(hint: 'Email'),
+                  ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
 
-            const SizedBox(
-              height: 42,
-              width: 253,
+                  const SizedBox(
+                    height: 42,
+                    width: 253,
 
-              // Might need to add this color if background isn't already transparent
-              // color: Theme.of(context).colorScheme.background,
+                    // Might need to add this color if background isn't already transparent
+                    // color: Theme.of(context).colorScheme.background,
 
-              child: TextEntry(hint: 'Password'),
-            ),
+                    child: TextEntry(hint: 'Password'),
+                  ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
 
-            PageChangeButton(
-              width: 140.0,
-              height: 50.0,
-              text: "Sign In",
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CreateAccountPage()),
-                );
-              },
+                  PageChangeButton(
+                    width: 140.0,
+                    height: 50.0,
+                    text: "Sign In",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CreateAccountPage()),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
