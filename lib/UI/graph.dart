@@ -53,20 +53,26 @@ class Graph extends StatelessWidget {
             ),
           ),
         ),
-        LineGraph(
-          features: features,
-          labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
-          labelY: const ['20%', '40%', '60%', '80%', '100%'],
-          showDescription: true,
-          graphColor: Colors.white30,
-          graphOpacity: 0.2,
-          verticalFeatureDirection: true,
-          descriptionHeight: 130,
-          size: const Size(50,50)
+        Expanded(
+          child: LineGraph(
+            features: features,
+            labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+            labelY: const ['20%', '40%', '60%', '80%', '100%'],
+            showDescription: true,
+            graphColor: Colors.white30,
+            graphOpacity: 0.2,
+            verticalFeatureDirection: true,
+            descriptionHeight: 130,
+            size: const Size(50,50)
+          ),
+          flex: 6,
         ),
-        const SizedBox(
-          height: 50,
-        )
+        const Expanded(
+          child: SizedBox(
+            height: 50,
+          ),
+          flex: 2,
+        ),
       ],
     );
   }

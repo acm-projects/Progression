@@ -8,9 +8,7 @@ class MainPage extends StatelessWidget {
 
   static final List<Widget> _list = [
     HomeTab(list: [
-      Expanded(
-        child: Graph(),
-      ),
+      Graph()
       ],
     ),
     const CalendarTab(),
