@@ -58,7 +58,10 @@ class _HomeTabState extends State<HomeTab> {
                         color: Theme.of(context).colorScheme.surface
                       ),
                   ),
-                  MakeSwiper(steps: widget.list)
+                  MakeSwiper(
+                      steps: widget.list
+
+                  ),
                 ],
               ),
             )

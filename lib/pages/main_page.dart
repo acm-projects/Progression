@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:progression/UI/graph.dart';
 import '../tabs/all_tabs.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   static final List<Widget> _list = [
-    const HomeTab(list: [Text('Home')],),
+    HomeTab(list: [
+      Graph(),
+      Graph(),
+      Graph(),
+      ],
+    ),
     const CalendarTab(),
     const NewLogTab(),
   ];
