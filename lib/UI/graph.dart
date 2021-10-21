@@ -41,7 +41,7 @@ class Graph extends StatelessWidget {
             graphColor: Colors.white30,
             graphOpacity: 0.2,
             descriptionHeight: 130,
-            size: const Size(50,50)
+            size: const Size(200,200)
           ),
           flex: 6,
         ),

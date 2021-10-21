@@ -49,7 +49,7 @@ class _HomeTabState extends State<HomeTab> {
 
             SizedBox(
               width: MediaQuery.of(context).size.width * .8,
-              height: 300,
+              height: 450,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
