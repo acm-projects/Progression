@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:table_calendar/table_calendar.dart';
+import '../UI/calendar.dart';
 import '../UI/background.dart';
 
 class CalendarTab extends StatelessWidget {
@@ -16,15 +16,18 @@ class CalendarTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20),),
+
             Text(
               'Calendar',
               style: Theme.of(context).textTheme.headline1,
             ),
-            TableCalendar(
-                focusedDay: DateTime.now(),
-                firstDay: DateTime.utc(2020, 1, 1),
-                lastDay: DateTime.utc(2030, 12, 31),
-            ),
+
+            const SizedBox(
+              height: 700,
+              width: 375,
+              child: TableComplexExample(),
+            )
 
           ],
         ),
