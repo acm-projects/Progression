@@ -3,11 +3,22 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/option_selector.dart';
+import 'package:progression/pages/main_page.dart';
+import 'package:progression/pages/test.dart';
 import '../UI/background.dart';
 import '../UI/page_change_button.dart';
 
-class MetricSelectPage extends StatelessWidget {
-  const MetricSelectPage({Key? key}) : super(key: key);
+class MetricSelectionPage extends StatefulWidget {
+  const MetricSelectionPage({Key? key, required this.entries}): super(key: key);
+  final List<String> entries;
+
+  @override
+  State createState() => MetricSelectionPageState();
+}
+
+class MetricSelectionPageState extends State<MetricSelectionPage> {
+
+  List<String> picked = <String>['app', 'hello'];
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +41,19 @@ class MetricSelectPage extends StatelessWidget {
 
         Expanded(child: _buildList()),
 
+        const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+
 
         PageChangeButton(
           width: 140.0,
           height: 50.0,
           text: "Select",
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+
+              MaterialPageRoute(builder: (context) => const MainPage())
+            );
           },
         ),
       ]
@@ -45,17 +62,15 @@ class MetricSelectPage extends StatelessWidget {
   }
 
   Widget _buildList() {
-    final List<String> entries = <String>['Bench Press', 'Squat', 'Deadlift', 'Shoulder Press', 'Pull-ups',
-      'Dumbbell Bench Press', 'Barbell Curl', 'Dumbell Curl', 'Front Squat', 'Bent-over Rows', 'Push-ups', 'Dumbell Shoulder Press'];
-    final List<String> selected = <String>[];
 
     return ListView.separated(
       shrinkWrap: true,
       padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
-      itemCount: entries.length,
+      itemCount: widget.entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return OptionSelector(text: entries[index]);
+        return OptionSelector(text: widget.entries[index], entries: picked,);
       },
+
       separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/option_selector.dart';
+import 'package:progression/pages/metric_selection.dart';
 import '../UI/background.dart';
 import '../UI/page_change_button.dart';
 
@@ -36,7 +37,10 @@ class SelectSportPage extends StatelessWidget {
               height: 50.0,
               text: "Select",
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MetricSelectionPage(entries: ['apple'])),
+                );
               },
             ),
           ],
@@ -55,7 +59,7 @@ class SelectSportPage extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return OptionSelector(text: entries[index]);
+        return OptionSelector(text: entries[index],entries: selected);
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
