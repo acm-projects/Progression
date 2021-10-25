@@ -3,16 +3,9 @@ import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
 
 class Graph extends StatelessWidget {
-  Graph({Key? key}) : super(key: key);
+  const Graph({Key? key, required this.features}) : super(key: key);
 
-  final List<Feature> features = [
-    Feature(
-      title: "Drink Water",
-      color: Colors.blue,
-      data: [0.2, 0.8, 0.4, 0.7, 0.6],
-    ),
-  ];
-
+  final List<Feature> features;
 
 
   @override
@@ -23,7 +16,7 @@ class Graph extends StatelessWidget {
       children: <Widget>[
         Container(),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
+          padding: EdgeInsets.symmetric(vertical: 4.0),
           child: Text(
             "Tasks Track",
             style: TextStyle(
@@ -41,13 +34,13 @@ class Graph extends StatelessWidget {
             graphColor: Colors.white30,
             graphOpacity: 0.2,
             descriptionHeight: 130,
-            size: const Size(200,200)
+            size: const Size(300,200)
           ),
           flex: 6,
         ),
         const Expanded(
           child: SizedBox(
-            height: 50,
+            height: 25,
           ),
           flex: 2,
         ),

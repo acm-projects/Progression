@@ -1,3 +1,4 @@
+import 'package:draw_graph/models/feature.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progression/UI/graph.dart';
@@ -8,7 +9,15 @@ class MainPage extends StatelessWidget {
 
   static final List<Widget> _list = [
     HomeTab(list: [
-      Graph()
+      Graph(
+        features: [
+          Feature(
+            title: "Drink Water",
+            color: Colors.blue,
+            data: [0.2, 0.8, 0.4, 0.7, 0.6],
+          ),
+        ],
+      ),
       ],
     ),
     const CalendarTab(),

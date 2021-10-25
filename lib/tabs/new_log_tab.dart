@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../UI/background.dart';
+import '../pages/new_log.dart';
 
 class NewLogTab extends StatelessWidget {
   const NewLogTab({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class NewLogTab extends StatelessWidget {
       children: const [
         Background(),
 
-        Text('New Log')
+        NewLogPage(entries: [],)
       ],
     );
   }

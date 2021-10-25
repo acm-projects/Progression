@@ -33,7 +33,7 @@ class _HomeTabState extends State<HomeTab> {
               style: Theme.of(context).textTheme.headline1,
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 15),),
 
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -45,11 +45,11 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 15),),
 
             SizedBox(
-              width: MediaQuery.of(context).size.width * .8,
-              height: 450,
+              width: MediaQuery.of(context).size.width * .9,
+              height: MediaQuery.of(context).size.height * .65,
               child: Stack(
                 alignment: Alignment.center,
                 children: [

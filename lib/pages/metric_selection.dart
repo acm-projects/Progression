@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/option_selector.dart';
 import 'package:progression/pages/main_page.dart';
-import 'package:progression/pages/test.dart';
 import '../UI/background.dart';
 import '../UI/page_change_button.dart';
 
