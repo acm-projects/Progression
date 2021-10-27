@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:temporary/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:temporary/services/database.dart';
@@ -42,7 +43,15 @@ Stream<Users?> get user {
       User? user = result.user;
 
       //create a new document for the user with the uid
-      await DatabaseService(uid: user!.uid).updateUserData('New Progression Member', 'Undecided Sport', 100);
+      final Timestamp now = Timestamp.now();
+      //change eventually because this only works to add a weightlifitng collection
+
+      //await DatabaseService(uid: user!.uid).updateUserData("New", "No Sport", 100);
+      await DatabaseService(uid: user!.uid).newWeightliftingLog('Weightlifting', now, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0 ,0 ,0);
+      //creates swimming log
+      //await DatabaseService(uid: user!.uid).newSwimmingLog(now, 0, 0, 0, 0, 0, 0, "emtpy");
+      //creates running log
+      //await DatabaseService(uid: user!.uid).newRunningLog(now, 0, "empty", 0, "empty", 0, 0);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
