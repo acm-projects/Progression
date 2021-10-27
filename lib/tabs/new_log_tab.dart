@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../UI/background.dart';
+import 'package:progression/UI/background.dart';
 import '../pages/new_log.dart';
 
 class NewLogTab extends StatelessWidget {
@@ -9,11 +9,24 @@ class NewLogTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack (
-      children: const [
-        Background(),
+        children: [
+          const Background(),
 
-        NewLogPage(entries: [],)
-      ],
+          Container(
+            padding: const EdgeInsets.only(
+              top: 50.0,
+              bottom: 30.0,
+              left: 10.0,
+              right: 10.0,
+
+            ),
+
+            child: const NewLogPage(
+              entries: [],
+            ),
+
+          )
+        ],
     );
   }
 }
