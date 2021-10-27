@@ -6,15 +6,15 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../package_utils/calendar_util.dart';
 
-class TableComplexExample extends StatefulWidget {
-  const TableComplexExample({Key? key}) : super(key: key);
+class Calendar extends StatefulWidget {
+  const Calendar({Key? key}) : super(key: key);
 
 
   @override
-  _TableComplexExampleState createState() => _TableComplexExampleState();
+  _CalendarState createState() => _CalendarState();
 }
 
-class _TableComplexExampleState extends State<TableComplexExample> {
+class _CalendarState extends State<Calendar> {
   late final PageController _pageController;
   late final ValueNotifier<List<Event>> _selectedEvents;
   final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
@@ -65,6 +65,7 @@ class _TableComplexExampleState extends State<TableComplexExample> {
       if (_selectedDays.contains(selectedDay)) {
         _selectedDays.remove(selectedDay);
       } else {
+        _selectedDays.clear();
         _selectedDays.add(selectedDay);
       }
 
@@ -149,13 +150,25 @@ class _TableComplexExampleState extends State<TableComplexExample> {
             onRangeSelected: _onRangeSelected,
             onCalendarCreated: (controller) => _pageController = controller,
             onPageChanged: (focusedDay) => _focusedDay.value = focusedDay,
+            sixWeekMonthsEnforced: true,
             onFormatChanged: (format) {
               if (_calendarFormat != format) {
                 setState(() => _calendarFormat = format);
               }
             },
+            daysOfWeekStyle: const DaysOfWeekStyle(
+              decoration: BoxDecoration(
+
+              ),
+              weekdayStyle: TextStyle(
+                fontSize: 15
+              ),
+                weekendStyle: TextStyle(
+                    fontSize: 15
+                )
+            )
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 1.0),
           Expanded(
             child: ValueListenableBuilder<List<Event>>(
               valueListenable: _selectedEvents,
@@ -170,7 +183,7 @@ class _TableComplexExampleState extends State<TableComplexExample> {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(),
-                        borderRadius: BorderRadius.circular(12.0),
+                        borderRadius: BorderRadius.circular(50.0),
                       ),
                       child: ListTile(
                         title: Text('${value[index]}'),

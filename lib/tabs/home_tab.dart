@@ -49,7 +49,7 @@ class _HomeTabState extends State<HomeTab> {
 
             SizedBox(
               width: MediaQuery.of(context).size.width * .9,
-              height: MediaQuery.of(context).size.height * .65,
+              height: MediaQuery.of(context).size.height * .60,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -64,7 +64,8 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ],
               ),
-            )
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20.0))
           ],
         ),
       ],

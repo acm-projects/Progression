@@ -16,18 +16,19 @@ class CalendarTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20.0),),
 
             Text(
               'Calendar',
               style: Theme.of(context).textTheme.headline1,
             ),
 
-            const SizedBox(
-              height: 700,
-              width: 375,
-              child: TableComplexExample(),
-            )
+            const Expanded(
+
+              child: Calendar(),
+            ),
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 30.0),)
 
           ],
         ),
