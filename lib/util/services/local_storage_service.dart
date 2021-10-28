@@ -4,13 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../user.dart';
 
 class LocalStorageService {
-  static late LocalStorageService _instance;
+  static final LocalStorageService _instance = LocalStorageService();
   static late SharedPreferences _preferences;
   static const String userKey = 'user';
 
 
   static Future<LocalStorageService> getInstance() async {
-    _instance = LocalStorageService();
 
     _preferences = await SharedPreferences.getInstance();
 
