@@ -24,6 +24,11 @@ class MainPage extends StatelessWidget {
     const NewLogTab(),
   ];
 
+  //@override
+  //Widget init () {
+
+  //}
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(

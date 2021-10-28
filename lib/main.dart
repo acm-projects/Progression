@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:progression/pages/login_page.dart';
+import 'package:progression/util/services/local_storage_service.dart';
+import 'util/services/service_locator.dart';
 
 import './pages/main_page.dart';
 
-void main () => runApp(const MyApp());
+void main () => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final storageService = locator<LocalStorageService>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +59,18 @@ class MyApp extends StatelessWidget {
 
       // The page your testing
       // Will eventually be the starting page
-      home: const MainPage(),
+      home: _getStartUpScreen(),
 
     );
   }
+  Widget _getStartUpScreen () {
+    if (storageService.user.rememberMe == false) {
+      return const LoginPage();
+    }
+    else {
+      return const MainPage();
+    }
+  }
 }
+
+

@@ -37,6 +37,8 @@ dependencies:
   draw_graph: ^1.0.0
   flutter_swiper_null_safety: ^1.0.2
   table_calendar: ^3.0.3
+  shared_preferences: ^2.0.8
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:
