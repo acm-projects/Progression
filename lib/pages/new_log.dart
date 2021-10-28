@@ -8,8 +8,10 @@ import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 
 class NewLogPage extends StatefulWidget {
-  const NewLogPage({Key? key, required this.entries}) : super(key: key);
+  NewLogPage({Key? key, required this.entries}) : super(key: key);
   final List<String> entries;
+
+  final TextEditingController date = TextEditingController(text: 'Password');
 
   @override
   State createState() => NewLogPageState();
@@ -45,10 +47,10 @@ class NewLogPageState extends State<NewLogPage> {
             const Padding(padding: EdgeInsets.only(
               right: 10.0,
             ),),
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 160,
-              child: TextEntry(hint: ' '),
+              child: TextEntry(hint: ' ', text: widget.date,),
             ),
           ]),
           Expanded(

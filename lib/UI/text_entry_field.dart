@@ -3,34 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TextEntry extends StatefulWidget {
-  const TextEntry({Key ? key, this.hint = 'hint'}) : super (key: key);
+  const TextEntry({Key ? key, this.hint = 'hint', required this.text}) : super (key: key);
 
   final String hint;
+  final TextEditingController text;
 
   @override
   _TextEntryState createState() => _TextEntryState();
 }
 
 class _TextEntryState extends State<TextEntry> {
-  late TextEditingController _textController;
 
 
   @override
   void initState() {
     super.initState();
-    _textController = TextEditingController(text: widget.hint);
   }
 
   @override
   void dispose() {
-    _textController.dispose();
+    widget.text.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField.borderless(
-      controller: _textController,
+      controller: widget.text,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
@@ -39,10 +38,11 @@ class _TextEntryState extends State<TextEntry> {
       textAlignVertical: TextAlignVertical.center,
       style: Theme.of(context).textTheme.bodyText2,
       onTap: () {
-        if (_textController.text == widget.hint) {
-          _textController.clear();
+        if (widget.text.text == widget.hint) {
+          widget.text.clear();
         }
-      }
+      },
+
     );
   }
 }

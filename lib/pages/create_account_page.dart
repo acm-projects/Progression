@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:progression/util/services/auth.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 
-class CreateAccountPage extends StatelessWidget {
-  const CreateAccountPage({Key? key}) : super(key: key);
+class CreateAccountPage extends StatefulWidget {
+  CreateAccountPage({Key? key}) : super(key: key);
 
+  final TextEditingController emailText = TextEditingController(text: 'Email');
+  final TextEditingController passwordText = TextEditingController(text: 'Password');
+  final TextEditingController password2Text = TextEditingController(text: 'Password');
+
+  @override
+  _CreateAccountPageState createState() => _CreateAccountPageState();
+
+}
+
+class _CreateAccountPageState extends State<CreateAccountPage> {
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -41,55 +55,49 @@ class CreateAccountPage extends StatelessWidget {
               style: Theme.of(context).textTheme.headline1,
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 35.0),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 30.0),),
 
-            const SizedBox(
+            Text(
+              error,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
+
+            SizedBox(
               height: 42,
               width: 253,
 
               // Might need to add this color if background isn't already transparent
               // color: Theme.of(context).colorScheme.background,
 
-              child: TextEntry(hint: 'Email'),
+              child: TextEntry(hint: 'Email', text: widget.emailText,),
 
             ),
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 253,
 
               // Might need to add this color if background isn't already transparent
               // color: Theme.of(context).colorScheme.background,
 
-              child: TextEntry(hint: 'Username'),
+              child: TextEntry(hint: 'Password', text: widget.passwordText,),
 
             ),
 
             const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 253,
 
               // Might need to add this color if background isn't already transparent
               // color: Theme.of(context).colorScheme.background,
 
-              child: TextEntry(hint: 'Password'),
-
-            ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
-
-            const SizedBox(
-              height: 42,
-              width: 253,
-
-              // Might need to add this color if background isn't already transparent
-              // color: Theme.of(context).colorScheme.background,
-
-              child: TextEntry(hint: 'Confirm Password'),
+              child: TextEntry(hint: 'Confirm Password', text: widget.password2Text,),
 
             ),
 
@@ -127,11 +135,20 @@ class CreateAccountPage extends StatelessWidget {
             const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
             PageChangeButton(
+              key: _formKey,
               width: 140.0,
               height: 50.0,
               text: "Create",
-              onPressed: () {
-                Navigator.pop(context);
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  dynamic result = await _auth.registerWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+                  if (result == null) {
+                    error = 'No user found with that email and password';
+                  }
+                  else {
+                    Navigator.pop(context);
+                  }
+                }
               },
             ),
           ],

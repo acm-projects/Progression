@@ -21,8 +21,8 @@ class NewLogTab extends StatelessWidget {
 
             ),
 
-            child: const NewLogPage(
-              entries: [],
+            child: NewLogPage(
+              entries: const [],
             ),
 
           )

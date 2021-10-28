@@ -5,15 +5,23 @@ import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import './create_account_page.dart';
+import '../util/services/auth.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+
+  final TextEditingController emailText = TextEditingController(text: 'Email');
+  final TextEditingController passwordText = TextEditingController(text: 'Password');
 
   @override
   State createState() => LoginPageState();
 }
 
 class LoginPageState extends State<LoginPage> {
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,39 +47,49 @@ class LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const SizedBox(
+                  Text(
+                    error,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  SizedBox(
                     height: 42,
                     width: 253,
 
                     // Might need to add this color if background isn't already transparent
                     // color: Theme.of(context).colorScheme.background,
 
-                    child: TextEntry(hint: 'Email'),
+                    child: TextEntry(hint: 'Email', text: widget.emailText,),
                   ),
 
                   const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
 
-                  const SizedBox(
+                  SizedBox(
                     height: 42,
                     width: 253,
 
                     // Might need to add this color if background isn't already transparent
                     // color: Theme.of(context).colorScheme.background,
 
-                    child: TextEntry(hint: 'Password'),
+                    child: TextEntry(hint: 'Password', text: widget.passwordText,),
                   ),
 
                   const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
 
                   PageChangeButton(
+                    key: _formKey,
                     width: 140.0,
                     height: 50.0,
                     text: "Sign In",
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const CreateAccountPage()),
-                      );
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+                        if (result == null) {
+                          error = 'No user found with that email and password';
+                        }
+                        else {
+                          // TODO Implement Navigation Function
+                        }
+                      }
                     },
                   ),
                 ],
@@ -119,7 +137,7 @@ class LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CreateAccountPage()),
+                  MaterialPageRoute(builder: (context) => CreateAccountPage()),
                 );
               },
             ),

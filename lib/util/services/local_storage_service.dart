@@ -10,19 +10,20 @@ class LocalStorageService {
 
 
   static Future<LocalStorageService> getInstance() async {
-    _instance ??= LocalStorageService();
+    _instance = LocalStorageService();
 
-    _preferences ??= await SharedPreferences.getInstance();
+    _preferences = await SharedPreferences.getInstance();
 
     return _instance;
   }
-  User get user {
+
+  Users get user {
     var userJson = _getFromDisk(userKey);
 
-    return User.fromJson(json.decode(userJson));
+    return Users.fromJson(json.decode(userJson));
   }
 
-  set user(User userToSave) {
+  set user(Users userToSave) {
     _saveToDisk(userKey, json.encode(userToSave.toJson()));
   }
 

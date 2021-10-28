@@ -1,19 +1,19 @@
 
-class User {
+class Users {
 
-  final String name;
   final bool rememberMe;
+  final String uid;
 
-  User({required this.name, required this.rememberMe});
+  Users({required this.rememberMe, required this.uid});
 
-  User.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        rememberMe = json['rememberMe'];
+  Users.fromJson(Map<String, dynamic> json)
+      : rememberMe = json['rememberMe'],
+        uid = json['uid'];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
     data['rememberMe'] = rememberMe;
+    data['uid'] = uid;
     return data;
   }
 }

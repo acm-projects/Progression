@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:progression/UI/stat_button.dart';
-import 'package:progression/pages/metric_selection.dart';
 import '../UI/background.dart';
-import 'package:progression/UI/option_selector.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 
 class StatEntryPage extends StatefulWidget {
-  const StatEntryPage({Key? key, required this.text}): super(key: key);
+  StatEntryPage({Key? key, required this.text}): super(key: key);
   final String text;
+  final TextEditingController text1 = TextEditingController(text: '');
+  final TextEditingController text2 = TextEditingController(text: '');
+  final TextEditingController text3 = TextEditingController(text: '');
 
   @override
   State createState() => StateEntryPageState();
@@ -48,12 +48,12 @@ class StateEntryPageState extends State<StatEntryPage> {
 
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 160,
 
 
-              child: TextEntry(hint: ' '),
+              child: TextEntry(hint: ' ', text: widget.text1,),
 
             ),
 
@@ -77,12 +77,12 @@ class StateEntryPageState extends State<StatEntryPage> {
 
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 160,
 
 
-              child: TextEntry(hint: ' '),
+              child: TextEntry(hint: ' ', text: widget.text2,),
 
             ),
 
@@ -107,12 +107,12 @@ class StateEntryPageState extends State<StatEntryPage> {
 
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 42,
               width: 160,
 
 
-              child: TextEntry(hint: ' '),
+              child: TextEntry(hint: ' ', text: widget.text3,),
 
             ),
 
