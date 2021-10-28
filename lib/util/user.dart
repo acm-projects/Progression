@@ -1,11 +1,11 @@
 
 class Users {
 
-  final bool rememberMe;
+  //final bool rememberMe;
   final String uid;
 
-  Users({required this.rememberMe, required this.uid});
-
+  Users({required this.uid});
+/*
   Users.fromJson(Map<String, dynamic> json)
       : rememberMe = json['rememberMe'],
         uid = json['uid'];
@@ -16,4 +16,6 @@ class Users {
     data['uid'] = uid;
     return data;
   }
+
+ */
 }

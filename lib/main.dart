@@ -6,14 +6,14 @@ import 'package:progression/util/services/auth.dart';
 //import 'package:progression/util/services/local_storage_service.dart';
 import 'package:progression/util/user.dart';
 import 'package:provider/provider.dart';
-import 'util/services/service_locator.dart';
+//import 'util/services/service_locator.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import './pages/main_page.dart';
 
 Future<void> main () async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  setupLocator();
+  //setupLocator();
   runApp(const MyApp());
 }
 
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
         )
     );
   }
-  /*
+/*
   Widget _getStartUpScreen () {
     var storageService = locator<LocalStorageService>();
     if (storageService.user.rememberMe == false) {
@@ -84,7 +84,8 @@ class MyApp extends StatelessWidget {
       return const MainPage();
     }
   }
-  */
+
+ */
 }
 
 

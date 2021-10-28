@@ -11,7 +11,7 @@ class AuthService {
     if (user == null) {
       return null;
     }
-    return Users(rememberMe: false, uid: user.uid);
+    return Users(uid: user.uid);
   }
 
   //auth change user stream
