@@ -19,131 +19,134 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   String error = '';
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        const Background(),
+    return Form (
+      key: _formKey,
+        child: Stack(
+            children: <Widget>[
+              const Background(),
 
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              ' It takes 10,000 hours to become a master in something.',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyText1,
-
-            ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
-
-            Container(
-              decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    error,
+                    ' It takes 10,000 hours to become a master in something.',
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SizedBox(
-                    height: 42,
-                    width: 253,
 
-                    // Might need to add this color if background isn't already transparent
-                    // color: Theme.of(context).colorScheme.background,
-
-                    child: TextEntry(hint: 'Email', text: widget.emailText,),
                   ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
 
-                  SizedBox(
-                    height: 42,
-                    width: 253,
+                  Container(
+                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          error,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        SizedBox(
+                          height: 42,
+                          width: 253,
 
-                    // Might need to add this color if background isn't already transparent
-                    // color: Theme.of(context).colorScheme.background,
+                          // Might need to add this color if background isn't already transparent
+                          // color: Theme.of(context).colorScheme.background,
 
-                    child: TextEntry(hint: 'Password', text: widget.passwordText,),
+                          child: TextEntry(hint: 'Email', text: widget.emailText,),
+                        ),
+
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+
+                        SizedBox(
+                          height: 42,
+                          width: 253,
+
+                          // Might need to add this color if background isn't already transparent
+                          // color: Theme.of(context).colorScheme.background,
+
+                          child: TextEntry(hint: 'Password', text: widget.passwordText,),
+                        ),
+
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+
+                        PageChangeButton(
+                          width: 140.0,
+                          height: 50.0,
+                          text: "Sign In",
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+                              if (result == null) {
+                                error = 'No user found with that email and password';
+                              }
+                              else {
+                                // TODO Implement Navigation Function
+                              }
+                            }
+                          },
+                        ),
+                      ],
+                    ),
                   ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      SizedBox(
+                        width: 160,
+                        height: 2,
+                        child: Container(
+                          color: Theme.of(context).colorScheme.onBackground,
+
+                        ),
+                      ),
+                      const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                      Text(
+                        'or',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                      SizedBox(
+                        width: 160,
+                        height: 2,
+                        child: Container(
+                          color: Theme.of(context).colorScheme.onBackground,
+
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
                   PageChangeButton(
                     width: 140.0,
                     height: 50.0,
-                    text: "Sign In",
-                    onPressed: () async {
-                      final formKey = GlobalKey<FormState>();
-                      if (formKey.currentState!.validate()) {
-                        dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
-                        if (result == null) {
-                          error = 'No user found with that email and password';
-                        }
-                        else {
-                          // TODO Implement Navigation Function
-                        }
-                      }
+                    text: "Create",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CreateAccountPage()),
+                      );
                     },
                   ),
+
                 ],
               ),
-            ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-
-              children: [
-                SizedBox(
-                  width: 160,
-                  height: 2,
-                  child: Container(
-                    color: Theme.of(context).colorScheme.onBackground,
-
-                  ),
-                ),
-                const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                Text(
-                  'or',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                SizedBox(
-                  width: 160,
-                  height: 2,
-                  child: Container(
-                    color: Theme.of(context).colorScheme.onBackground,
-
-                  ),
-                ),
-
-              ],
-            ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
-
-            PageChangeButton(
-              width: 140.0,
-              height: 50.0,
-              text: "Create",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CreateAccountPage()),
-                );
-              },
-            ),
-
-          ],
-        ),
-      ]
+            ]
+        )
     );
   }
 }
