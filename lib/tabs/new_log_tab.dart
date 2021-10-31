@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:progression/UI/background.dart';
 import '../pages/new_log.dart';
+import '../util/weightlifting.dart';
 
 class NewLogTab extends StatelessWidget {
   const NewLogTab({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class NewLogTab extends StatelessWidget {
             ),
 
             child: NewLogPage(
-              entries: const [],
+              sport: Weightlifting(),
             ),
 
           )

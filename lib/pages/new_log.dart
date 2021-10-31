@@ -7,10 +7,11 @@ import 'package:progression/pages/stat_entry_page.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import '../UI/background.dart';
+import '../util/weightlifting.dart';
 
 class NewLogPage extends StatefulWidget {
-  NewLogPage({Key? key, required this.entries}) : super(key: key);
-  final List<String> entries;
+  NewLogPage({Key? key, required this.sport }) : super(key: key);
+  final Weightlifting sport;
 
   final TextEditingController date = TextEditingController(text: 'Password');
 
@@ -85,16 +86,16 @@ class NewLogPageState extends State<NewLogPage> {
     return ListView.separated(
       shrinkWrap: true,
       padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
-      itemCount: widget.entries.length,
+      itemCount: widget.sport.list.length,
       itemBuilder: (BuildContext context, int index) {
         return StatButton(
-          text: widget.entries[index],
+          text: widget.sport.list[index].name,
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      StatEntryPage(text: widget.entries[index])),
+                      StatEntryPage(text: widget.sport.list[index].name)),
             );
           },
         );
