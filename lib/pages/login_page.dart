@@ -19,14 +19,12 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
 
   String error = '';
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      key: _formKey,
       children: <Widget>[
         const Background(),
 
@@ -46,7 +44,6 @@ class LoginPageState extends State<LoginPage> {
             Container(
               decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
               padding: const EdgeInsets.all(16.0),
-              key: _formKey,
               child: Column(
                 children: [
                   Text(
@@ -78,12 +75,12 @@ class LoginPageState extends State<LoginPage> {
                   const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
 
                   PageChangeButton(
-                    key: _formKey,
                     width: 140.0,
                     height: 50.0,
                     text: "Sign In",
                     onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
+                      final formKey = GlobalKey<FormState>();
+                      if (formKey.currentState!.validate()) {
                         dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
                         if (result == null) {
                           error = 'No user found with that email and password';
