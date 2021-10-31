@@ -26,6 +26,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      key: _formKey,
       children: <Widget>[
         const Background(),
 
@@ -45,6 +46,7 @@ class LoginPageState extends State<LoginPage> {
             Container(
               decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
               padding: const EdgeInsets.all(16.0),
+              key: _formKey,
               child: Column(
                 children: [
                   Text(
