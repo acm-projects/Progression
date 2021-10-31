@@ -24,6 +24,7 @@ class NewLogPageState extends State<NewLogPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
+
         children: [
           Text(
             'New Log',
