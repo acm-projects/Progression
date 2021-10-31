@@ -6,6 +6,7 @@ import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import './create_account_page.dart';
 import '../util/services/auth.dart';
+import '../pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -88,7 +89,10 @@ class LoginPageState extends State<LoginPage> {
                                 error = 'No user found with that email and password';
                               }
                               else {
-                                // TODO Implement Navigation Function
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const MainPage())
+                                );
                               }
                             }
                           },
