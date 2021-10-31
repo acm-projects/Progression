@@ -44,7 +44,7 @@ class _OptionSelectorState extends State<OptionSelector> {
                 color: selected ? Colors.white.withOpacity(1) : Colors.white.withOpacity(.7),
                 borderRadius: const BorderRadius.all(Radius.circular(10))
             ),
-                child: Text(widget.text, style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.center)
+                child: Text(widget.text, style: Theme.of(context).textTheme.headline4, textAlign: TextAlign.center)
           )
         )
       ]

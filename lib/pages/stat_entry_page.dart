@@ -28,11 +28,13 @@ class StateEntryPageState extends State<StatEntryPage> {
     Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
+      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+
       Text(
       widget.text, style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.center,
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
 
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +52,7 @@ class StateEntryPageState extends State<StatEntryPage> {
             ),
             SizedBox(
               height: 42,
-              width: 160,
+              width: 250,
 
 
               child: TextEntry(hint: ' ', text: widget.text1,),
@@ -60,7 +62,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
 
 
       Row(
@@ -79,7 +81,7 @@ class StateEntryPageState extends State<StatEntryPage> {
             ),
             SizedBox(
               height: 42,
-              width: 160,
+              width: 250,
 
 
               child: TextEntry(hint: ' ', text: widget.text2,),
@@ -89,7 +91,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
 
 
 
@@ -109,12 +111,15 @@ class StateEntryPageState extends State<StatEntryPage> {
             ),
             SizedBox(
               height: 42,
-              width: 160,
+              width: 250,
 
 
               child: TextEntry(hint: ' ', text: widget.text3,),
 
             ),
+
+
+
 
           ]
       ),
@@ -125,10 +130,21 @@ class StateEntryPageState extends State<StatEntryPage> {
 
 
 
+      Spacer(),
 
-
-
-
+      // Align(
+      //     alignment: Alignment.bottomCenter,
+      //     child:
+          PageChangeButton(
+            width: 140.0,
+            height: 50.0,
+            text: "Save",
+            onPressed: () {
+              Navigator.pop(context); // temp holder for testing
+            },
+          ),
+      //),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
 
             ]
 
@@ -136,18 +152,18 @@ class StateEntryPageState extends State<StatEntryPage> {
 
           ),
 
-      Align(
-      alignment: Alignment.bottomCenter,
-        child:
-          PageChangeButton(
-          width: 140.0,
-          height: 50.0,
-          text: "Save",
-            onPressed: () {
-            Navigator.pop(context); // temp holder for testing
-            },
-          )
-      )
+      // Align(
+      // alignment: Alignment.bottomCenter,
+      //   child:
+      //     PageChangeButton(
+      //     width: 140.0,
+      //     height: 50.0,
+      //     text: "Save",
+      //       onPressed: () {
+      //       Navigator.pop(context); // temp holder for testing
+      //       },
+      //     )
+      // ),
         ]
 
     );

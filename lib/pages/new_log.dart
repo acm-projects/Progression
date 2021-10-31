@@ -6,6 +6,7 @@ import 'package:progression/UI/stat_button.dart';
 import 'package:progression/pages/stat_entry_page.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
+import '../UI/background.dart';
 
 class NewLogPage extends StatefulWidget {
   NewLogPage({Key? key, required this.entries}) : super(key: key);
@@ -25,7 +26,10 @@ class NewLogPageState extends State<NewLogPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
 
+
         children: [
+          const Background(), //need help
+
           Text(
             'New Log',
             style: Theme.of(context).textTheme.headline1,
@@ -69,7 +73,7 @@ class NewLogPageState extends State<NewLogPage> {
             },
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 30.0),
+            padding: EdgeInsets.symmetric(vertical: 10.0),
           ),
         ]);
   }
