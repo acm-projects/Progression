@@ -30,7 +30,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     return Form (
       key: _formKey,
         child: Stack(
-          children: [
+          children: <Widget>[
 
             const Background(),
 
@@ -137,7 +137,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
                 PageChangeButton(
-                  key: _formKey,
                   width: 140.0,
                   height: 50.0,
                   text: "Create",
