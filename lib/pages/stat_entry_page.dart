@@ -30,11 +30,17 @@ class StateEntryPageState extends State<StatEntryPage> {
     children: [
       const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
-      Text(
-      widget.text, style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.center,
+      Container(
+        width: 500,
+        height: 130,
+        alignment: Alignment.center,
+      child:
+        Text(
+        widget.text, style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.center,
+        ),
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+      //const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
 
       Row(
           mainAxisAlignment: MainAxisAlignment.center,

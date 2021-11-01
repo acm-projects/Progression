@@ -31,9 +31,7 @@ class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
         const Background(),
 
         Column(
-
           children: [
-
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0),
             ),

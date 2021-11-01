@@ -37,8 +37,8 @@ class CalendarStatPageState extends State<CalendarStatPage> {
 
 
             Container(
-            width: 500,
             height: 135,
+            width: 500,
             alignment: Alignment.center,
             child:
             Text(

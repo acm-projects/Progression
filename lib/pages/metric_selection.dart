@@ -52,8 +52,8 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             Navigator.push(
               context,
 
-              //MaterialPageRoute(builder: (context) => const MainPage())
-              MaterialPageRoute(builder: (context) => NewLogPage(entries: picked))
+              MaterialPageRoute(builder: (context) => const MainPage())
+              //MaterialPageRoute(builder: (context) => NewLogPage(entries: picked))
             );
           },
         ),

@@ -33,8 +33,8 @@ class SelectSportPage extends StatelessWidget {
 
 
             PageChangeButton(
-              width: 140.0,
               height: 50.0,
+              width: 140.0,
               text: "Select",
               onPressed: () {
                 Navigator.push(
