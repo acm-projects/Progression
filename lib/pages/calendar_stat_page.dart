@@ -32,18 +32,26 @@ class CalendarStatPageState extends State<CalendarStatPage> {
           children: [
 
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 8.0),
             ),
 
+
+            Container(
+            width: 500,
+            height: 135,
+            alignment: Alignment.center,
+            child:
             Text(
               widget.exercise,
               style: Theme.of(context).textTheme.headline1,
               textAlign: TextAlign.center,
             ),
+              ),
+              //),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.0),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 15.0),
+            // ),
 
             Text(
               widget.sets.toString(),

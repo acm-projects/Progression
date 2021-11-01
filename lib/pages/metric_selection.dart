@@ -35,13 +35,13 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
       children: [
         Text(
           'Which metrics do you want to track?',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headline4,
           textAlign: TextAlign.center,
         ),
 
         Expanded(child: _buildList()),
 
-        const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+
 
 
         PageChangeButton(
@@ -57,6 +57,7 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             );
           },
         ),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
       ]
     )
     ]);

@@ -25,7 +25,7 @@ class SelectSportPage extends StatelessWidget {
           children: [
             Text(
               'Which sports do you want to track?',
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headline4,
               textAlign: TextAlign.center,
             ),
 
@@ -42,6 +42,9 @@ class SelectSportPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const MetricSelectionPage(entries: ['apple'])),
                 );
               },
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.0),
             ),
           ],
         )

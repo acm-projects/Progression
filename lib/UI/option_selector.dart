@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 class OptionSelector extends StatefulWidget {
-  const OptionSelector({Key ? key, this.width = 348, this.height = 46, this.text = 'text', required this.entries}) : super (key: key);
+  const OptionSelector({Key ? key, this.width = 348, this.height = 40, this.text = 'text', required this.entries}) : super (key: key);
 
   final double width;
   final double height;
@@ -44,7 +44,7 @@ class _OptionSelectorState extends State<OptionSelector> {
                 color: selected ? Colors.white.withOpacity(1) : Colors.white.withOpacity(.7),
                 borderRadius: const BorderRadius.all(Radius.circular(10))
             ),
-                child: Text(widget.text, style: Theme.of(context).textTheme.headline4, textAlign: TextAlign.center)
+                child: Text(widget.text, style: Theme.of(context).textTheme.headline3, textAlign: TextAlign.center,)
           )
         )
       ]
