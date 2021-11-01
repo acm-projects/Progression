@@ -64,11 +64,8 @@ class LoginPageState extends State<LoginPage> {
                           child: TextEntry(
                             hint: 'Email',
                             text: widget.emailText,
-                            onChanged: (hint) {
-                              if (widget.emailText.text == '') {
-                                widget.emailText.text = 'Email';
-                              }
-                            },),
+                            onChanged: (hint) {}
+                            ),
                         ),
 
                         const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
@@ -83,11 +80,7 @@ class LoginPageState extends State<LoginPage> {
                           child: TextEntry(
                             hint: 'Password',
                             text: widget.passwordText,
-                            onChanged: (hint) {
-                              if (widget.passwordText.text == '') {
-                                widget.passwordText.text = 'Password';
-                              }
-                            },),
+                            onChanged: (hint) {},),
                         ),
 
                         const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
