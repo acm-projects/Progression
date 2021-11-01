@@ -4,7 +4,8 @@ class Weightlifting {
   final String sport = "Weightlifting";
   DateTime date = DateTime.now();
 
-  List<Exercise> list = [Exercise(name: "deadLift"),
+  List<Exercise> list = [
+    Exercise(name: "Dead Lift"),
     Exercise(name: "Back Squat"),
     Exercise(name: "Hip Thrust"),
     Exercise(name: "Leg Press"),
