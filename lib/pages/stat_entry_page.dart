@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:progression/util/exercise.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 
 class StatEntryPage extends StatefulWidget {
-  StatEntryPage({Key? key, required this.text}): super(key: key);
+  StatEntryPage({Key? key, required this.text, required this.exercise}): super(key: key);
   final String text;
+  final Exercise exercise;
   final TextEditingController text1 = TextEditingController(text: '');
-  final TextEditingController text2 = TextEditingController(text: '');
-  final TextEditingController text3 = TextEditingController(text: '');
+  final TextEditingController text2 = TextEditingController(text: '0');
+  final TextEditingController text3 = TextEditingController(text: '0');
 
   @override
   State createState() => StateEntryPageState();
@@ -61,7 +63,15 @@ class StateEntryPageState extends State<StatEntryPage> {
               width: 250,
 
 
-              child: TextEntry(hint: ' ', text: widget.text1,),
+              child: TextEntry(
+                hint: 'Date',
+                text: widget.text1,
+                  onChanged: (hint) {
+                    if (widget.text1.text == '') {
+                      widget.text1.text = 'Date';
+                    }
+                  },
+              ),
 
             ),
 
@@ -90,7 +100,15 @@ class StateEntryPageState extends State<StatEntryPage> {
               width: 250,
 
 
-              child: TextEntry(hint: ' ', text: widget.text2,),
+              child: TextEntry(
+                hint: widget.exercise.weight.toString(),
+                text: widget.text2,
+                onChanged: (hint) {
+                  if (widget.text2.text == '') {
+                    widget.text2.text = widget.exercise.weight.toString();
+                  }
+                },
+              ),
 
             ),
 
@@ -120,7 +138,15 @@ class StateEntryPageState extends State<StatEntryPage> {
               width: 250,
 
 
-              child: TextEntry(hint: ' ', text: widget.text3,),
+              child: TextEntry(
+                hint: widget.exercise.reps.toString(),
+                text: widget.text3,
+                onChanged: (hint) {
+                  if (widget.text3.text == '') {
+                    widget.text3.text = widget.exercise.reps.toString();
+                  }
+                },
+              ),
 
             ),
 

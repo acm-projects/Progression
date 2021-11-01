@@ -61,7 +61,14 @@ class LoginPageState extends State<LoginPage> {
                           // Might need to add this color if background isn't already transparent
                           // color: Theme.of(context).colorScheme.background,
 
-                          child: TextEntry(hint: 'Email', text: widget.emailText,),
+                          child: TextEntry(
+                            hint: 'Email',
+                            text: widget.emailText,
+                            onChanged: (hint) {
+                              if (widget.emailText.text == '') {
+                                widget.emailText.text = 'Email';
+                              }
+                            },),
                         ),
 
                         const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
@@ -73,7 +80,14 @@ class LoginPageState extends State<LoginPage> {
                           // Might need to add this color if background isn't already transparent
                           // color: Theme.of(context).colorScheme.background,
 
-                          child: TextEntry(hint: 'Password', text: widget.passwordText,),
+                          child: TextEntry(
+                            hint: 'Password',
+                            text: widget.passwordText,
+                            onChanged: (hint) {
+                              if (widget.passwordText.text == '') {
+                                widget.passwordText.text = 'Password';
+                              }
+                            },),
                         ),
 
                         const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),

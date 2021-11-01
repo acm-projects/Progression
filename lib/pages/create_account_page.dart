@@ -73,7 +73,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
 
-                  child: TextEntry(hint: 'Email', text: widget.emailText,),
+                  child: TextEntry(
+                    hint: 'Email',
+                    text: widget.emailText,
+                    onChanged: (hint) {
+                      if (widget.emailText.text == '') {
+                        widget.emailText.text = 'Email';
+                      }
+                    },),
 
                 ),
 
@@ -86,7 +93,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
 
-                  child: TextEntry(hint: 'Password', text: widget.passwordText,),
+                  child: TextEntry(
+                    hint: 'Password',
+                    text: widget.passwordText,
+                    onChanged: (hint) {
+                      if (widget.passwordText.text == '') {
+                        widget.passwordText.text = 'Password';
+                      }
+                    },),
 
                 ),
 
@@ -99,7 +113,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
 
-                  child: TextEntry(hint: 'Confirm Password', text: widget.password2Text,),
+                  child: TextEntry(
+                    hint: 'Password',
+                    text: widget.password2Text,
+                    onChanged: (hint) {
+                      if (widget.password2Text.text == '') {
+                        widget.password2Text.text = 'Password';
+                      }
+                    },),
 
                 ),
 

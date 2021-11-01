@@ -56,7 +56,11 @@ class NewLogPageState extends State<NewLogPage> {
             SizedBox(
               height: 42,
               width: 160,
-              child: TextEntry(hint: ' ', text: widget.date,),
+              child: TextEntry(
+                hint: ' ',
+                text: widget.date,
+                onChanged: (hint) {},
+              ),
             ),
           ]),
           Expanded(
@@ -95,7 +99,7 @@ class NewLogPageState extends State<NewLogPage> {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      StatEntryPage(text: widget.sport.list[index].name)),
+                      StatEntryPage(text: widget.sport.list[index].name, exercise: widget.sport.list[index],)),
             );
           },
         );

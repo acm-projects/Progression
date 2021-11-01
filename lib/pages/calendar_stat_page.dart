@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:progression/UI/stat_button.dart';
-import 'package:progression/pages/stat_entry_page.dart';
-import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 
 class CalendarStatPage extends StatefulWidget {
-  CalendarStatPage({Key? key, required this.exercise, this.sets = 0, this.reps = 0, this.weight = 0}): super(key: key);
+  const CalendarStatPage({Key? key, required this.exercise, this.sets = 0, this.reps = 0, this.weight = 0}): super(key: key);
   final String exercise;
   final int sets;
   final int reps;
@@ -97,7 +94,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
               textAlign: TextAlign.center,
             ),
 
-            Spacer(),
+            const Spacer(),
 
             PageChangeButton(
               width: 140.0,

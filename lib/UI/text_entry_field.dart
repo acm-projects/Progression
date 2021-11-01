@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TextEntry extends StatefulWidget {
-  const TextEntry({Key ? key, this.hint = 'hint', required this.text}) : super (key: key);
+
+  const TextEntry({Key ? key, this.hint = 'hint', required this.text, required this.onChanged}) : super (key: key);
 
   final String hint;
   final TextEditingController text;
+  final Function(String) onChanged;
+
 
   @override
   _TextEntryState createState() => _TextEntryState();
@@ -42,7 +45,7 @@ class _TextEntryState extends State<TextEntry> {
           widget.text.clear();
         }
       },
-
+      onChanged: widget.onChanged,
     );
   }
 }
