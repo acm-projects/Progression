@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Weightlifting {
   final String sport;
-  final Timestamp date;
+  final DateTime date;
   final int deadLiftWeight;
   final int deadLiftReps;
   final int backSquatWeight;

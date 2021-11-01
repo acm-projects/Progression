@@ -17,10 +17,10 @@ class AuthService {
 
   //auth change user stream
   //FirebaseUser is User now
-Stream<Users?> get user {
+  Stream<Users?> get user {
     return _auth.authStateChanges()
         .map(_userFromFirebaseUser);
-}
+  }
 
   //sign in with email and password
   @override
@@ -28,6 +28,10 @@ Stream<Users?> get user {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
+
+      //add doc
+
+      await DatabaseService(uid: user!.uid).newWeightliftingLog("weightlifting", DateTime.now(), 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -43,15 +47,9 @@ Stream<Users?> get user {
       User? user = result.user;
 
       //create a new document for the user with the uid
-      final Timestamp now = Timestamp.now();
-      //change eventually because this only works to add a weightlifitng collection
+      await DatabaseService(uid: user!.uid).newWeightliftingLog("weightlifting", DateTime.now(), 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
+      //await DatabaseService(uid: user!.uid).updateUserData('New Progression Member', 'Undecided Sport', 100);
 
-      //await DatabaseService(uid: user!.uid).updateUserData("New", "No Sport", 100);
-      await DatabaseService(uid: user!.uid).newWeightliftingLog('Weightlifting', now, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0 ,0 ,0);
-      //creates swimming log
-      //await DatabaseService(uid: user!.uid).newSwimmingLog(now, 0, 0, 0, 0, 0, 0, "emtpy");
-      //creates running log
-      //await DatabaseService(uid: user!.uid).newRunningLog(now, 0, "empty", 0, "empty", 0, 0);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

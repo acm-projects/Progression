@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temporary/services/auth.dart';
 import 'package:temporary/shared/constants.dart';
-import 'package:temporary/shared/loading.dart';
+import 'package:temporary/shared/load_page.dart';
 
 class Register extends StatefulWidget {
   //const Register({Key? key}) : super(key: key);
@@ -34,14 +34,14 @@ class _RegisterState extends State<Register> {
           title: Text('Sign up to Progression'),
           actions: <Widget>[
             TextButton.icon(
-              style: TextButton.styleFrom(
-                primary: Colors.white, // foreground
-              ),
-              icon: Icon(Icons.person),
-              label: Text('Sign In'),
-              onPressed: () {
-                widget.toggleView();
-              }
+                style: TextButton.styleFrom(
+                  primary: Colors.white, // foreground
+                ),
+                icon: Icon(Icons.person),
+                label: Text('Sign In'),
+                onPressed: () {
+                  widget.toggleView();
+                }
             )
           ],
         ),
@@ -70,29 +70,29 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue[400], // foreground
-                  ),
-                  child: Text('Register',
-                      style: TextStyle(color: Colors.white)
-                  ),
-                  onPressed: () async {
-                    if(_formKey.currentState!.validate()){
-                      setState(() => loading = true);
-                      dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-                      if (result == null){
-                        setState(() {
-                          error = 'Please provide a valid email';
-                          loading = false;
-                        });
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[400], // foreground
+                    ),
+                    child: Text('Register',
+                        style: TextStyle(color: Colors.white)
+                    ),
+                    onPressed: () async {
+                      if(_formKey.currentState!.validate()){
+                        setState(() => loading = true);
+                        dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                        if (result == null){
+                          setState(() {
+                            error = 'Please provide a valid email';
+                            loading = false;
+                          });
+                        }
                       }
                     }
-                  }
                 ),
                 SizedBox(height: 5.0),
                 Text(
-                  error,
-                  style: TextStyle(color: Colors.red, fontSize: 10.0)
+                    error,
+                    style: TextStyle(color: Colors.red, fontSize: 10.0)
                 ),
               ],
             ),
