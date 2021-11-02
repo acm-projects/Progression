@@ -9,7 +9,6 @@ import '../UI/page_change_button.dart';
 import './create_account_page.dart';
 import '../util/services/auth.dart';
 import '../pages/main_page.dart';
-import '../util/user.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -101,7 +100,7 @@ class LoginPageState extends State<LoginPage> {
                                 error = 'No user found with that email and password';
                               }
                               else {
-                                currentUser = Users(uid: FirebaseAuth.instance.currentUser!.uid);
+                                currentUser = FirebaseAuth.instance.currentUser;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())
