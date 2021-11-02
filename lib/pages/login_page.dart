@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import '../UI/page_change_button.dart';
 import './create_account_page.dart';
 import '../util/services/auth.dart';
 import '../pages/main_page.dart';
+import '../util/user.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -94,12 +96,12 @@ class LoginPageState extends State<LoginPage> {
                           text: "Sign In",
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
-                              if (result == null) {
+                              UserCredential result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+                              if (result.user == null) {
                                 error = 'No user found with that email and password';
                               }
                               else {
-                                currentUser = result.user;
+                                currentUser = Users(uid: result.user!.uid);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())
