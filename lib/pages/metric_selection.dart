@@ -57,7 +57,7 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             );
           },
         ),
-        const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
       ]
     )
     ]);

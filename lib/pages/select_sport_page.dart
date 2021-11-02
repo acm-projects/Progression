@@ -44,7 +44,7 @@ class SelectSportPage extends StatelessWidget {
               },
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 10.0),
             ),
           ],
         )

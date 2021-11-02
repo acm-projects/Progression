@@ -44,11 +44,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
               textAlign: TextAlign.center,
             ),
               ),
-              //),
 
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(vertical: 15.0),
-            // ),
 
             Text(
               widget.sets.toString(),
@@ -63,7 +59,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
             ),
 
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 11.0),
+              padding: EdgeInsets.symmetric(vertical: 12.0),
             ),
 
             Text(
@@ -79,7 +75,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
             ),
 
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 11.0),
+              padding: EdgeInsets.symmetric(vertical: 12.0),
             ),
 
             Text(
@@ -106,7 +102,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
             ),
 
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 10.0),
             ),
 
           ]
