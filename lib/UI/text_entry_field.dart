@@ -40,12 +40,14 @@ class _TextEntryState extends State<TextEntry> {
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
       style: Theme.of(context).textTheme.bodyText2,
+      placeholder: widget.hint,
       onTap: () {
         if (widget.text.text == widget.hint) {
           widget.text.clear();
         }
       },
       onChanged: widget.onChanged,
+
     );
   }
 }
