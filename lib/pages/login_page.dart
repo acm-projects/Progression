@@ -46,7 +46,7 @@ class LoginPageState extends State<LoginPage> {
                   const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
 
                   Container(
-                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
+                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.background, borderRadius: BorderRadius.all(Radius.circular(20))),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
@@ -61,14 +61,16 @@ class LoginPageState extends State<LoginPage> {
                           // Might need to add this color if background isn't already transparent
                           // color: Theme.of(context).colorScheme.background,
 
-                          child: TextEntry(
+                          child:
+                          TextEntry(
                             hint: 'Email',
                             text: widget.emailText,
+
                             onChanged: (hint) {}
                             ),
                         ),
 
-                        const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
                         SizedBox(
                           height: 42,
@@ -83,7 +85,7 @@ class LoginPageState extends State<LoginPage> {
                             onChanged: (hint) {},),
                         ),
 
-                        const Padding(padding: EdgeInsets.symmetric(vertical: 16.0)),
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
                         PageChangeButton(
                           width: 140.0,
@@ -104,6 +106,8 @@ class LoginPageState extends State<LoginPage> {
                             }
                           },
                         ),
+
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 10.0))
                       ],
                     ),
                   ),

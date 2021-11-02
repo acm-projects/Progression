@@ -30,7 +30,7 @@ class StateEntryPageState extends State<StatEntryPage> {
     Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
 
       Container(
         width: 500,
@@ -42,7 +42,7 @@ class StateEntryPageState extends State<StatEntryPage> {
         ),
       ),
 
-      //const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 9.0),),
 
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +78,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
 
 
       Row(
@@ -115,7 +115,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
 
 
 
@@ -156,12 +156,6 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      //const Padding(padding: EdgeInsets.symmetric(vertical: 70.0),),
-
-
-
-
-
       Spacer(),
 
       // Align(
@@ -179,23 +173,7 @@ class StateEntryPageState extends State<StatEntryPage> {
       const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
 
             ]
-
-
-
           ),
-
-      // Align(
-      // alignment: Alignment.bottomCenter,
-      //   child:
-      //     PageChangeButton(
-      //     width: 140.0,
-      //     height: 50.0,
-      //     text: "Save",
-      //       onPressed: () {
-      //       Navigator.pop(context); // temp holder for testing
-      //       },
-      //     )
-      // ),
         ]
 
     );

@@ -28,7 +28,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
 
     return Form (
-      key: _formKey,
+        key: _formKey,
         child: Stack(
           children: <Widget>[
 
@@ -36,7 +36,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
             GestureDetector(
               child: Container(
-                padding: const EdgeInsets.only(left: 30.0, top: 60.0),
+                padding: const EdgeInsets.only(left: 15.0, top: 15.0),
                 transformAlignment: Alignment.topLeft,
                 child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
               ),
@@ -50,14 +50,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
-
                 Text(
                   'Create Account',
                   style: Theme.of(context).textTheme.headline1,
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 30.0),),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
                 Text(
                   error,
@@ -68,7 +66,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 SizedBox(
                   height: 42,
-                  width: 253,
+                  width: 270,
 
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
@@ -84,11 +82,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 25.0),),
 
                 SizedBox(
                   height: 42,
-                  width: 253,
+                  width: 270,
 
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
@@ -104,11 +102,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 25.0),),
 
                 SizedBox(
                   height: 42,
-                  width: 253,
+                  width: 270,
 
                   // Might need to add this color if background isn't already transparent
                   // color: Theme.of(context).colorScheme.background,
@@ -124,7 +122,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 20.0),),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
