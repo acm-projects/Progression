@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:progression/util/package_utils/globals.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
@@ -46,7 +47,7 @@ class LoginPageState extends State<LoginPage> {
                   const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
 
                   Container(
-                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.background, borderRadius: BorderRadius.all(Radius.circular(20))),
+                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.background, borderRadius: const BorderRadius.all(Radius.circular(20))),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
@@ -98,6 +99,7 @@ class LoginPageState extends State<LoginPage> {
                                 error = 'No user found with that email and password';
                               }
                               else {
+                                currentUser = result.user;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())

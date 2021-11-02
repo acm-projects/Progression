@@ -1,6 +1,5 @@
 import '../user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import './database.dart';
 
 class AuthService {
 
@@ -40,7 +39,6 @@ class AuthService {
       User? user = result.user;
 
       //create a new document for the user with the uid
-      await DatabaseService(uid: user!.uid).updateUserData('New Progression Member', 'Undecided Sport', 100);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

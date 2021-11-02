@@ -13,7 +13,7 @@ class DatabaseService {
       .collection('users');
 
   //creates new weightlifting document
-  Future newWeightliftingLog(String sport, Timestamp date,
+  Future newWeightliftingLog(String sport, DateTime date,
       List<Exercise> workouts) async {
     return await usersCollection.doc(uid).collection("Weightlifting").doc().set(
         {

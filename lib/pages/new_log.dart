@@ -8,6 +8,8 @@ import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 import '../util/weightlifting.dart';
+import '../util/services/database.dart';
+import '../util/package_utils/globals.dart';
 
 class NewLogPage extends StatefulWidget {
   NewLogPage({Key? key, required this.sport }) : super(key: key);
@@ -73,8 +75,9 @@ class NewLogPageState extends State<NewLogPage> {
             width: 140.0,
             height: 50.0,
             text: "Save",
-            onPressed: () {
-              Navigator.pop(context); // temp holder for testing
+            onPressed: () async {
+              await DatabaseService(uid: currentUser.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
+              Navigator.pop(context);
             },
           ),
           const Padding(
@@ -84,22 +87,19 @@ class NewLogPageState extends State<NewLogPage> {
   }
 
   Widget _buildList() {
-    // final List<String> entries = <String>['Bench Press', 'Squat', 'Deadlift', 'Shoulder Press', 'Pull-ups',
-    //   'Dumbbell Bench Press', 'Barbell Curl', 'Dumbell Curl', 'Front Squat', 'Bent-over Rows', 'Push-ups', 'Dumbell Shoulder Press'];
-    // final List<String> selected = <String>[];
     return ListView.separated(
       shrinkWrap: true,
       padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
-      itemCount: widget.sport.list.length,
+      itemCount: widget.sport.listExercises.length,
       itemBuilder: (BuildContext context, int index) {
         return StatButton(
-          text: widget.sport.list[index].name,
+          text: widget.sport.listExercises[index].name,
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      StatEntryPage(text: widget.sport.list[index].name, exercise: widget.sport.list[index],)),
+                      StatEntryPage(text: widget.sport.listExercises[index].name, exercise: widget.sport.listExercises[index],)),
             );
           },
         );
