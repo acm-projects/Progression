@@ -96,11 +96,13 @@ class LoginPageState extends State<LoginPage> {
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+
                               if (result.user == null) {
                                 error = 'No user found with that email and password';
                               }
                               else {
-                                currentUser = FirebaseAuth.instance.currentUser;
+
+                                currentUser =  _auth.user as User;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())
