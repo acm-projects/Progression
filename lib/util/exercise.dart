@@ -1,11 +1,13 @@
 class Exercise {
   final String name;
-  int weight = 0;
-  int reps = 0;
+  int weight;
+  int reps;
   bool didExercise = false;
 
   Exercise ({
     required this.name,
+    this.weight = 0,
+    this.reps = 0,
   });
 
   setWeight(int w){
@@ -16,5 +18,11 @@ class Exercise {
   }
   setDone(){
     didExercise = !didExercise;
+  }
+  getWeight(){
+    return weight;
+  }
+  getReps(){
+    return reps;
   }
 }
