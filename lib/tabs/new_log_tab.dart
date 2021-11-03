@@ -23,7 +23,7 @@ class NewLogTab extends StatelessWidget {
             ),
 
             child: NewLogPage(
-              sport: Weightlifting(),
+              sport: Weightlifting(date: DateTime.now(), listExercises: Weightlifting.list,),
             ),
 
           )
