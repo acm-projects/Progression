@@ -11,7 +11,7 @@ class StatEntryPage extends StatefulWidget {
   StatEntryPage({Key? key, required this.text, required this.exercise}): super(key: key);
   final String text;
   final Exercise exercise;
-  final TextEditingController text1 = TextEditingController(text: '');
+  final TextEditingController text1 = TextEditingController(text: '0');
   final TextEditingController text2 = TextEditingController(text: '0');
   final TextEditingController text3 = TextEditingController(text: '0');
 
@@ -64,12 +64,10 @@ class StateEntryPageState extends State<StatEntryPage> {
 
 
               child: TextEntry(
-                hint: 'Date',
+                hint: widget.exercise.sets.toString(),
                 text: widget.text1,
                   onChanged: (hint) {
-                    if (widget.text1.text == '') {
-                      widget.text1.text = 'Date';
-                    }
+                    widget.exercise.sets = int.parse(widget.text1.text);
                   },
               ),
 
@@ -104,9 +102,7 @@ class StateEntryPageState extends State<StatEntryPage> {
                 hint: widget.exercise.weight.toString(),
                 text: widget.text2,
                 onChanged: (hint) {
-                  if (widget.text2.text == '') {
-                    widget.text2.text = widget.exercise.weight.toString();
-                  }
+                  widget.exercise.weight = int.parse(widget.text2.text);
                 },
               ),
 
@@ -142,9 +138,7 @@ class StateEntryPageState extends State<StatEntryPage> {
                 hint: widget.exercise.reps.toString(),
                 text: widget.text3,
                 onChanged: (hint) {
-                  if (widget.text3.text == '') {
-                    widget.text3.text = widget.exercise.reps.toString();
-                  }
+                  widget.exercise.reps = int.parse(widget.text3.text);
                 },
               ),
 
