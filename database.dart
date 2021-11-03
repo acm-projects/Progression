@@ -18,20 +18,28 @@ class DatabaseService {
       'date': date,
       'deadLiftWeight': workouts[0].getWeight(),
       'deadLiftReps': workouts[0].getReps(),
+      'deadLiftSets': workouts[0].getSets(),
       'backSquatWeight': workouts[1].getWeight(),
       'backSquatReps': workouts[1].getReps(),
+      'backSquatSets': workouts[1].getSets(),
       'hipThrustWeight': workouts[2].getWeight(),
       'hipThrustReps': workouts[2].getReps(),
+      'hipThrustSets': workouts[2].getSets(),
       'legPressWeight': workouts[3].getWeight(),
       'legPressReps': workouts[3].getReps(),
+      'legPressSets': workouts[3].getSets(),
       'benchPressWeight': workouts[4].getWeight(),
       'benchPressReps': workouts[4].getReps(),
+      'benchPressSets': workouts[4].getSets(),
       'lateralPulldownWeight': workouts[5].getWeight(),
       'lateralPulldownReps': workouts[5].getReps(),
+      'lateralPulldownSets': workouts[5].getSets(),
       'bicepCurlWeight': workouts[6].getWeight(),
       'bicepCurlReps': workouts[6].getReps(),
+      'bicepCurlSets': workouts[6].getSets(),
       'tricepExtensionWeight': workouts[7].getWeight(),
       'tricepExtensionReps': workouts[7].getReps(),
+      'tricepExtensionSets': workouts[7].getSets(),
     });
   }
 
@@ -45,42 +53,50 @@ class DatabaseService {
             Exercise(
               name: 'deadLift',
               weight: doc.get('deadLiftWeight') ?? 0,
-              reps: doc.get('deadLiftReps') ?? 0
+              reps: doc.get('deadLiftReps') ?? 0,
+              sets: doc.get('deadLiftSets') ?? 0
             ),
             Exercise(
                 name: 'backSquat',
                 weight: doc.get('backSquatWeight') ?? 0,
-                reps: doc.get('backSquatReps') ?? 0
+                reps: doc.get('backSquatReps') ?? 0,
+                sets: doc.get('backSquatSets') ?? 0
             ),
             Exercise(
                 name: 'hipThrust',
                 weight: doc.get('hipThrustWeight') ?? 0,
-                reps: doc.get('hipThrustReps') ?? 0
+                reps: doc.get('hipThrustReps') ?? 0,
+                sets: doc.get('hipThrustSets') ?? 0
             ),
             Exercise(
                 name: 'legPress',
                 weight: doc.get('legPressWeight') ?? 0,
-                reps: doc.get('legPressReps') ?? 0
+                reps: doc.get('legPressReps') ?? 0,
+                sets: doc.get('legPressSets') ?? 0
             ),
             Exercise(
                 name: 'benchPress',
                 weight: doc.get('benchPressWeight') ?? 0,
-                reps: doc.get('benchPressReps') ?? 0
+                reps: doc.get('benchPressReps') ?? 0,
+                sets: doc.get('benchPressSets') ?? 0
             ),
             Exercise(
                 name: 'lateralPulldown',
                 weight: doc.get('lateralPulldownWeight') ?? 0,
-                reps: doc.get('lateralPulldownReps') ?? 0
+                reps: doc.get('lateralPulldownReps') ?? 0,
+                sets: doc.get('lateralPulldownSets') ?? 0
             ),
             Exercise(
                 name: 'bicepCurl',
                 weight: doc.get('bicepCurlWeight') ?? 0,
-                reps: doc.get('bicepCurlReps') ?? 0
+                reps: doc.get('bicepCurlReps') ?? 0,
+                sets: doc.get('bicepCurlSets') ?? 0
             ),
             Exercise(
                 name: 'tricepExtension',
                 weight: doc.get('tricepExtensionWeight') ?? 0,
-                reps: doc.get('tricepExtensionReps') ?? 0
+                reps: doc.get('tricepExtensionReps') ?? 0,
+                sets: doc.get('tricepExtensionSets') ?? 0
             )
           ],
 
