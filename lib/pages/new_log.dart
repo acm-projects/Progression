@@ -14,8 +14,7 @@ import '../util/package_utils/globals.dart';
 class NewLogPage extends StatefulWidget {
   NewLogPage({Key? key, required this.sport }) : super(key: key);
   final Weightlifting sport;
-
-  final TextEditingController date = TextEditingController(text: 'Password');
+  final TextEditingController date = TextEditingController(text: 'Date: ');
 
   @override
   State createState() => NewLogPageState();
@@ -94,17 +93,27 @@ class NewLogPageState extends State<NewLogPage> {
       itemBuilder: (BuildContext context, int index) {
         return StatButton(
           text: widget.sport.listExercises[index].name,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      StatEntryPage(text: widget.sport.listExercises[index].name, exercise: widget.sport.listExercises[index],)),
-            );
+          onPressed: () async {
+            _awaitReturnValueFromSecondScreen(context, index);
           },
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
+  }
+
+  void _awaitReturnValueFromSecondScreen(BuildContext context, int index) async {
+
+    // start the SecondScreen and wait for it to finish with a result
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StatEntryPage(text: "Weightlifting", exercise: widget.sport.listExercises[index],),
+        ));
+
+    // after the SecondScreen result comes back update the Text widget with it
+    setState(() {
+      widget.sport.listExercises[index] = result;
+    });
   }
 }

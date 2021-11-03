@@ -150,7 +150,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      Spacer(),
+      const Spacer(),
 
       // Align(
       //     alignment: Alignment.bottomCenter,
@@ -160,7 +160,7 @@ class StateEntryPageState extends State<StatEntryPage> {
             height: 50.0,
             text: "Save",
             onPressed: () {
-              Navigator.pop(context); // temp holder for testing
+              Navigator.pop(context, widget.exercise); // temp holder for testing
             },
           ),
       //),
