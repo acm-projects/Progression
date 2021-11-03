@@ -1,3 +1,5 @@
+import 'package:progression/util/package_utils/globals.dart';
+
 import '../user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -25,6 +27,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
+      currentUser = user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

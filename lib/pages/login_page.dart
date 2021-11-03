@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:progression/util/package_utils/globals.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
@@ -97,12 +95,10 @@ class LoginPageState extends State<LoginPage> {
                             if (_formKey.currentState!.validate()) {
                               dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
 
-                              if (result.user == null) {
+                              if (result == null) {
                                 error = 'No user found with that email and password';
                               }
                               else {
-
-                                currentUser =  _auth.user as User;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())

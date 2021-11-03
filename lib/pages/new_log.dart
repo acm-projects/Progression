@@ -76,7 +76,7 @@ class NewLogPageState extends State<NewLogPage> {
             height: 50.0,
             text: "Save",
             onPressed: () async {
-              await DatabaseService(uid: currentUser.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
+              await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
               Navigator.pop(context);
             },
           ),
