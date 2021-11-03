@@ -23,10 +23,23 @@ class SelectSportPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Which sports do you want to track?',
-              style: Theme.of(context).textTheme.headline4,
-              textAlign: TextAlign.center,
+            const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
+
+            Container (
+              width: 370,
+              height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+              ),
+              child:
+              Text(
+                'Which sport would you like to track?',
+                style: Theme.of(context).textTheme.headline4,
+                textAlign: TextAlign.center,
+              ),
+              //color: Colors.white,
+
             ),
 
             Expanded(child: _buildList()),

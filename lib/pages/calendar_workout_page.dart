@@ -32,15 +32,27 @@ class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
 
         Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
+
+            Container (
+              width: 370,
+              height: 70,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+              ),
+              child:
+              Text(
+                widget.date.toString(),
+                style: Theme.of(context).textTheme.headline1,
+                textAlign: TextAlign.center,
+              ),
+              //color: Colors.white,
+
             ),
 
-            Text(
-              widget.date.toString(),
-              style: Theme.of(context).textTheme.headline1,
-              textAlign: TextAlign.center,
-            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
+
 
             Expanded(child: _buildList()),
 

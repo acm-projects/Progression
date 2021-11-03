@@ -33,16 +33,18 @@ class StateEntryPageState extends State<StatEntryPage> {
       const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
 
       Container(
-        width: 500,
-        height: 130,
+        width: 380,
+        height: 120,
+        decoration: BoxDecoration(color: Colors.white.withOpacity(0.4), borderRadius: const BorderRadius.all(Radius.circular(20))),
+        padding: const EdgeInsets.all(16.0),
         alignment: Alignment.center,
       child:
         Text(
-        widget.text, style: Theme.of(context).textTheme.headline1, textAlign: TextAlign.center,
+        widget.text, style: TextStyle(fontSize: 40, fontFamily: 'Heebo-Light', fontWeight: FontWeight.w500, color: Colors.black, decoration: TextDecoration.none), textAlign: TextAlign.center,
         ),
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 9.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +55,7 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Sets', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center),
+                Text('Sets', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.center),
                 color: Theme.of(context).colorScheme.background,
 
               ),
@@ -76,7 +78,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
 
       Row(
@@ -88,7 +90,7 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Reps', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center),
+                Text('Reps', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.center),
                 color: Theme.of(context).colorScheme.background,
 
               ),
@@ -111,7 +113,7 @@ class StateEntryPageState extends State<StatEntryPage> {
           ]
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
 
 
@@ -124,7 +126,7 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Weight', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center),
+                Text('Weight', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.left),
                 color: Theme.of(context).colorScheme.background,
 
               ),
@@ -143,10 +145,6 @@ class StateEntryPageState extends State<StatEntryPage> {
               ),
 
             ),
-
-
-
-
           ]
       ),
 

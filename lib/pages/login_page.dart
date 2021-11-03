@@ -36,17 +36,37 @@ class LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    ' It takes 10,000 hours to become a master in something.',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1,
+
+                  Container (
+                    alignment: Alignment.center,
+                    width: 350,
+                    height: 70,
+                    // decoration: BoxDecoration(
+                    //     color: Colors.white,
+                    //     borderRadius: const BorderRadius.all(Radius.circular(10))
+                    // ),
+                    child:
+                    Text(
+                      'Progression',
+                      style: Theme.of(context).textTheme.headline1,
+                      textAlign: TextAlign.center,
+                    ),
+                    //color: Colors.white,
 
                   ),
+                  // Text(
+                  //   'a',
+                  //   textAlign: TextAlign.center,
+                  //   style: Theme.of(context).textTheme.bodyText1,
+                  //
+                  // ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 36.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 38.0)),
 
                   Container(
-                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.background, borderRadius: const BorderRadius.all(Radius.circular(20))),
+                    height: 450,
+                    width: 300,
+                    decoration: BoxDecoration(color: Colors.white.withOpacity(0.4), borderRadius: const BorderRadius.all(Radius.circular(20))),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
@@ -57,6 +77,8 @@ class LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: 42,
                           width: 253,
+                          //decoration: BoxDecoration(border: Border.all(color: Colors.black), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                          //padding: const EdgeInsets.all(12.0),
 
                           // Might need to add this color if background isn't already transparent
                           // color: Theme.of(context).colorScheme.background,
@@ -88,8 +110,8 @@ class LoginPageState extends State<LoginPage> {
                         const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
 
                         PageChangeButton(
-                          width: 140.0,
-                          height: 50.0,
+                          // width: 253.0,
+                          // height: 42.0,
                           text: "Sign In",
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
@@ -108,9 +130,51 @@ class LoginPageState extends State<LoginPage> {
                           },
                         ),
 
-                        const Padding(padding: EdgeInsets.symmetric(vertical: 10.0))
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 15.0)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              height: 2,
+                              child: Container(
+                                color: Theme.of(context).colorScheme.onBackground,
+
+                              ),
+                            ),
+                            const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                            Text(
+                              'or',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                            SizedBox(
+                              width: 100,
+                              height: 2,
+                              child: Container(
+                                color: Theme.of(context).colorScheme.onBackground,
+
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        const Padding(padding: EdgeInsets.symmetric(vertical: 15.0)),
+
+                        PageChangeButton(
+                          // width: 253.0,
+                          // height: 42.0,
+                          text: "Create",
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CreateAccountPage()),
+                            );
+                          },
+                        ),
                       ],
-                    ),
+                    ), //this is the box dont mess up
                   ),
 
                   const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
@@ -120,44 +184,28 @@ class LoginPageState extends State<LoginPage> {
 
                     children: [
                       SizedBox(
-                        width: 160,
+                        width: 320,
                         height: 2,
                         child: Container(
-                          color: Theme.of(context).colorScheme.onBackground,
-
+                          color: Theme.of(context).colorScheme.background,
                         ),
                       ),
-                      const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                      Text(
-                        'or',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                      SizedBox(
-                        width: 160,
-                        height: 2,
-                        child: Container(
-                          color: Theme.of(context).colorScheme.onBackground,
-
-                        ),
-                      ),
-
                     ],
                   ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
-
-                  PageChangeButton(
-                    width: 140.0,
-                    height: 50.0,
-                    text: "Create",
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CreateAccountPage()),
-                      );
-                    },
-                  ),
+                  // const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
+                  //
+                  // PageChangeButton(
+                  //   // width: 253.0,
+                  //   // height: 42.0,
+                  //   text: "Create",
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) => CreateAccountPage()),
+                  //     );
+                  //   },
+                  // ),
 
                 ],
               ),
