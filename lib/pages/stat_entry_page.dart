@@ -8,12 +8,12 @@ import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 
 class StatEntryPage extends StatefulWidget {
-  StatEntryPage({Key? key, required this.text, required this.exercise}): super(key: key);
+  const StatEntryPage({Key? key, required this.text, required this.exercise, required this.text1, required this.text2, required this.text3}): super(key: key);
   final String text;
   final Exercise exercise;
-  final TextEditingController text1 = TextEditingController(text: '0');
-  final TextEditingController text2 = TextEditingController(text: '0');
-  final TextEditingController text3 = TextEditingController(text: '0');
+  final TextEditingController text1;
+  final TextEditingController text2;
+  final TextEditingController text3;
 
   @override
   State createState() => StateEntryPageState();
@@ -64,11 +64,9 @@ class StateEntryPageState extends State<StatEntryPage> {
 
 
               child: TextEntry(
-                hint: widget.exercise.sets.toString(),
+                hint: '0',
                 text: widget.text1,
-                  onChanged: (hint) {
-                    widget.exercise.sets = int.parse(widget.text1.text);
-                  },
+                  onChanged: (hint) {},
               ),
 
             ),
@@ -99,11 +97,9 @@ class StateEntryPageState extends State<StatEntryPage> {
 
 
               child: TextEntry(
-                hint: widget.exercise.weight.toString(),
+                hint: '0',
                 text: widget.text2,
-                onChanged: (hint) {
-                  widget.exercise.weight = int.parse(widget.text2.text);
-                },
+                onChanged: (hint) {},
               ),
 
             ),
@@ -135,11 +131,9 @@ class StateEntryPageState extends State<StatEntryPage> {
 
 
               child: TextEntry(
-                hint: widget.exercise.reps.toString(),
+                hint: '0',
                 text: widget.text3,
-                onChanged: (hint) {
-                  widget.exercise.reps = int.parse(widget.text3.text);
-                },
+                onChanged: (hint) {},
               ),
 
             ),
@@ -160,7 +154,12 @@ class StateEntryPageState extends State<StatEntryPage> {
             height: 50.0,
             text: "Save",
             onPressed: () {
-              Navigator.pop(context, widget.exercise); // temp holder for testing
+              Navigator.pop(context, Exercise(
+                name: widget.exercise.name,
+                weight: int.parse(widget.text3.text),
+                reps: int.parse(widget.text2.text),
+                sets: int.parse(widget.text1.text)
+              )); // temp holder for testing
             },
           ),
       //),

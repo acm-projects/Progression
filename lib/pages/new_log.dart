@@ -108,7 +108,12 @@ class NewLogPageState extends State<NewLogPage> {
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => StatEntryPage(text: "Weightlifting", exercise: widget.sport.listExercises[index],),
+          builder: (context) => StatEntryPage(
+            text: "Weightlifting",
+            exercise: widget.sport.listExercises[index],
+            text1: TextEditingController(text: widget.sport.listExercises[index].sets.toString()),
+            text2: TextEditingController(text: widget.sport.listExercises[index].reps.toString()),
+            text3: TextEditingController(text: widget.sport.listExercises[index].weight.toString()),),
         ));
 
     // after the SecondScreen result comes back update the Text widget with it
