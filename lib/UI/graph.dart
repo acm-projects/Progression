@@ -30,11 +30,11 @@ class Graph extends StatelessWidget {
           child: LineGraph(
             features: features,
             labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
-            labelY: const ['20%', '40%', '60%', '80%', '100%'],
+            labelY: const ['0%', '20%', '40%', '60%', '80%', '100%'],
             graphColor: Colors.white30,
             graphOpacity: 0.2,
             descriptionHeight: 130,
-            size: const Size(300,200)
+            size: const Size(400,400)
           ),
           flex: 6,
         ),

@@ -33,8 +33,6 @@ class _HomeTabState extends State<HomeTab> {
               style: Theme.of(context).textTheme.headline1,
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 15),),
-
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 2,

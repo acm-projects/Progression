@@ -10,6 +10,7 @@ class MainPage extends StatelessWidget {
   static final List<Widget> _list = [
     HomeTab(list: [
       Graph(
+
         features: [
           Feature(
             title: "Drink Water",
