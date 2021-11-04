@@ -40,7 +40,7 @@ class StateEntryPageState extends State<StatEntryPage> {
         alignment: Alignment.center,
       child:
         Text(
-        widget.text, style: TextStyle(fontSize: 40, fontFamily: 'Heebo-Light', fontWeight: FontWeight.w500, color: Colors.black, decoration: TextDecoration.none), textAlign: TextAlign.center,
+        widget.text, style: const TextStyle(fontSize: 40, fontFamily: 'Heebo-Light', fontWeight: FontWeight.w500, color: Colors.black, decoration: TextDecoration.none), textAlign: TextAlign.center,
         ),
       ),
 
