@@ -28,22 +28,26 @@ class CalendarStatPageState extends State<CalendarStatPage> {
 
           children: [
 
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
 
-
-            Container(
-            height: 135,
-            width: 500,
-            alignment: Alignment.center,
-            child:
-            Text(
-              widget.exercise,
-              style: Theme.of(context).textTheme.headline1,
-              textAlign: TextAlign.center,
-            ),
+            Container (
+              width: 370,
+              height: 70,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
               ),
+              child:
+              Text(
+                widget.exercise,
+                style: Theme.of(context).textTheme.headline1,
+                textAlign: TextAlign.center,
+              ),
+              //color: Colors.white,
+
+            ),
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
 
             Text(

@@ -33,13 +33,33 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'Which metrics do you want to track?',
-          style: Theme.of(context).textTheme.headline4,
-          textAlign: TextAlign.center,
-        ),
+
+        const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
+
+            Container (
+            width: 370,
+            height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+              ),
+            child:
+                Text(
+                    'Which metrics do you want to track?',
+                    style: Theme.of(context).textTheme.headline4,
+                    textAlign: TextAlign.center,
+                  ),
+            //color: Colors.white,
+
+          ),
+        //),
+
+        const Padding(padding: EdgeInsets.symmetric(vertical: 5.0),),
+
 
         Expanded(child: _buildList()),
+
+        const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
 
 
 
