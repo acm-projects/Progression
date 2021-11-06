@@ -4,11 +4,12 @@ import 'package:flutter/widgets.dart';
 
 class TextEntry extends StatefulWidget {
 
-  const TextEntry({Key ? key, this.hint = 'hint', required this.text, required this.onChanged}) : super (key: key);
+  const TextEntry({Key ? key, this.hint = 'hint', required this.text, required this.onChanged, this.obscure = false}) : super (key: key);
 
   final String hint;
   final TextEditingController text;
   final Function(String) onChanged;
+  final bool obscure;
 
 
   @override
@@ -32,6 +33,9 @@ class _TextEntryState extends State<TextEntry> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField.borderless(
+      obscureText: widget.obscure,
+      autocorrect: false,
+      enableSuggestions: false,
       controller: widget.text,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,

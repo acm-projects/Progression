@@ -61,12 +61,12 @@ class LoginPageState extends State<LoginPage> {
                   //
                   // ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 38.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 70.0)),
 
                   Container(
                     height: 450,
                     width: 300,
-                    decoration: BoxDecoration(color: Colors.white.withOpacity(0.4), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: const BorderRadius.all(Radius.circular(20))),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
@@ -104,6 +104,7 @@ class LoginPageState extends State<LoginPage> {
                           child: TextEntry(
                             hint: 'Password',
                             text: widget.passwordText,
+                            obscure: true,
                             onChanged: (hint) {},),
                         ),
 
@@ -174,7 +175,7 @@ class LoginPageState extends State<LoginPage> {
                           },
                         ),
                       ],
-                    ), //this is the box dont mess up
+                    ), //this is the box don't mess up
                   ),
 
                   const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),

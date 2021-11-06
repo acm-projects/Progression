@@ -9,6 +9,8 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration (
+        color: Theme.of(context).colorScheme.background,
+        /*
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -16,7 +18,7 @@ class Background extends StatelessWidget {
               Theme.of(context).colorScheme.primary,
               Theme.of(context).colorScheme.secondary,
             ]
-        ),
+            */
       ),
     );
   }

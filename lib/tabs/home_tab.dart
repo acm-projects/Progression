@@ -4,9 +4,11 @@ import '../UI/background.dart';
 import '../UI/swiper.dart';
 
 class HomeTab extends StatefulWidget {
-  const HomeTab({Key? key, required this.list}) : super(key: key);
+  HomeTab({Key? key}) : super(key: key);
 
-  final List<Widget> list;
+  final List<Widget> list = [
+
+  ];
 
   @override
   _HomeTabState createState() => _HomeTabState();

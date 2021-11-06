@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class StatButton extends StatelessWidget {
   const StatButton(
-      {Key? key, this.width = 300.0, this.height = 40.0, this.text = 'blank', required this.onPressed }) : super(key: key);
+      {Key? key, this.width = 150.0, this.height = 40.0, this.text = 'blank', required this.onPressed }) : super(key: key);
 
 
   final double width;

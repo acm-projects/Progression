@@ -30,7 +30,7 @@ class StateEntryPageState extends State<StatEntryPage> {
     Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 30.0),),
 
       Container(
         width: 380,
@@ -44,7 +44,7 @@ class StateEntryPageState extends State<StatEntryPage> {
         ),
       ),
 
-      const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
+      const Padding(padding: EdgeInsets.symmetric(vertical: 17.0),),
 
       Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,51 +1,38 @@
-import 'package:flutter/material.dart';
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
+import 'package:flutter/material.dart';
 
-class Graph extends StatelessWidget {
-  const Graph({Key? key, required this.features}) : super(key: key);
+class GraphScreen extends StatefulWidget {
+  const GraphScreen({Key? key, required this.features}) : super(key: key);
 
   final List<Feature> features;
 
+  @override
+  _GraphScreenState createState() => _GraphScreenState();
+}
+
+class _GraphScreenState extends State<GraphScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.0),
-          child: Text(
-            "Tasks Track",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2,
-            ),
+    return Scaffold(
+      backgroundColor: Colors.white54,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget> [
+          Expanded(
+              child: LineGraph(
+                features: widget.features,
+                size: const Size(400, 300),
+                labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+                labelY: const ['25%', '45%', '65%', '75%', '85%', '100%'],
+                showDescription: false,
+                graphColor: Colors.black87,
+              ),
           ),
-        ),
-        Expanded(
-          child: LineGraph(
-            features: features,
-            labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
-            labelY: const ['0%', '20%', '40%', '60%', '80%', '100%'],
-            graphColor: Colors.white30,
-            graphOpacity: 0.2,
-            descriptionHeight: 130,
-            size: const Size(400,400)
-          ),
-          flex: 6,
-        ),
-        const Expanded(
-          child: SizedBox(
-            height: 25,
-          ),
-          flex: 2,
-        ),
-      ],
+        ],
+      ),
     );
   }
-
 }

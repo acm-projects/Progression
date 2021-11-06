@@ -8,21 +8,20 @@ class MakeSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: SafeArea(
-        top: true,
-        bottom: true,
-        child: Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            return steps[index];
-          },
-          loop: true,
-          itemCount: steps.length,
-          control: const SwiperControl(),
-          autoplay: false,
-          scrollDirection: Axis.horizontal,
-          pagination: const SwiperPagination(),
-        ),
+      body: Column(
+        children: [
+          Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return steps[index];
+            },
+            loop: true,
+            itemCount: steps.length,
+            control: const SwiperControl(),
+            autoplay: false,
+            scrollDirection: Axis.horizontal,
+            pagination: const SwiperPagination(),
+          ),
+        ],
       ),
     );
   }

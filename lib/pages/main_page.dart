@@ -1,39 +1,33 @@
-import 'package:draw_graph/models/feature.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:progression/UI/graph.dart';
 import '../tabs/all_tabs.dart';
+import '../util/package_utils/globals.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
-  static final List<Widget> _list = [
-    HomeTab(list: [
-      Graph(
+  @override
+  _MainPage createState() => _MainPage();
+}
 
-        features: [
-          Feature(
-            title: "Drink Water",
-            color: Colors.blue,
-            data: [0.2, 0.8, 0.4, 0.7, 0.6],
-          ),
-        ],
-      ),
-      ],
-    ),
+class _MainPage extends State<MainPage> {
+
+  static final List<Widget> _list = [
+    HomeTab(),
     const CalendarTab(),
     const NewLogTab(),
   ];
 
-  //@override
-  //Widget init () {
-
-  //}
+  @override
+  void initState () {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: CupertinoTabScaffold(
+        controller: tabController,
           tabBar: CupertinoTabBar(
             items: const [
               BottomNavigationBarItem(icon: Icon(CupertinoIcons.graph_square), label: 'Stats'),

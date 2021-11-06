@@ -1,21 +1,24 @@
 
+import 'package:progression/util/selected_exercise.dart';
+import './weightlifting.dart';
+
 class Users {
 
-  //final bool rememberMe;
   final String uid;
+  List<List<SelectedExercise>> exercises = [
+    [
+      SelectedExercise(name: Weightlifting.listNames[0]),
+      SelectedExercise(name: Weightlifting.listNames[1]),
+      SelectedExercise(name: Weightlifting.listNames[2]),
+      SelectedExercise(name: Weightlifting.listNames[3]),
+      SelectedExercise(name: Weightlifting.listNames[4]),
+      SelectedExercise(name: Weightlifting.listNames[5]),
+      SelectedExercise(name: Weightlifting.listNames[6]),
+      SelectedExercise(name: Weightlifting.listNames[7]),
+    ],
+  ];
 
   Users({required this.uid});
-/*
-  Users.fromJson(Map<String, dynamic> json)
-      : rememberMe = json['rememberMe'],
-        uid = json['uid'];
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['rememberMe'] = rememberMe;
-    data['uid'] = uid;
-    return data;
-  }
 
- */
 }

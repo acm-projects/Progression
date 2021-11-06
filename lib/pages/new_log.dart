@@ -76,7 +76,8 @@ class NewLogPageState extends State<NewLogPage> {
             text: "Save",
             onPressed: () async {
               await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
-              Navigator.pop(context);
+
+              tabController.index = 0;
             },
           ),
           const Padding(
@@ -92,6 +93,7 @@ class NewLogPageState extends State<NewLogPage> {
       itemCount: widget.sport.listExercises.length,
       itemBuilder: (BuildContext context, int index) {
         return StatButton(
+          width: 150,
           text: widget.sport.listExercises[index].name,
           onPressed: () async {
             _awaitReturnValueFromSecondScreen(context, index);
