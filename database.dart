@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:temporary/models/exercise.dart';
+import 'package:temporary/models/running.dart';
+import 'package:temporary/models/swimming.dart';
 import 'package:temporary/models/weightlifting.dart';
-import 'package:temporary/screens/home/weightlifting_log_list.dart';
+import 'package:temporary/models/weights.dart';
 
 class DatabaseService {
 
@@ -11,35 +12,37 @@ class DatabaseService {
   //collection reference
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
 
-  //creates new weightlifting document
-  Future newWeightliftingLog(String sport, Timestamp date, List<Exercise> workouts) async {
+
+  Future updateUserData(String name, String sport, int age) async {
     return await usersCollection.doc(uid).set({
       'sport': sport,
+      'name': name,
+      'age': age,
+    });
+  }
+
+
+  //creates new weightlifting document
+  Future newWeightliftingLog(String sport, DateTime date, int deadLiftWeight, int deadLiftReps, int backSquatWeight, int backSquatReps, int hipThrustWeight, int hipThrustReps, int legPressWeight, int legPressReps, int benchPressWeight, int benchPressReps, int lateralPulldownWeight, int lateralPulldownReps, int bicepCurlWeight, int bicepCurlReps, int tricepExtensionWeight, int tricepExtensionReps) async {
+    return await usersCollection.doc(uid).collection("Weightlifting").doc().set({
+      'sport': sport,
       'date': date,
-      'deadLiftWeight': workouts[0].getWeight(),
-      'deadLiftReps': workouts[0].getReps(),
-      'deadLiftSets': workouts[0].getSets(),
-      'backSquatWeight': workouts[1].getWeight(),
-      'backSquatReps': workouts[1].getReps(),
-      'backSquatSets': workouts[1].getSets(),
-      'hipThrustWeight': workouts[2].getWeight(),
-      'hipThrustReps': workouts[2].getReps(),
-      'hipThrustSets': workouts[2].getSets(),
-      'legPressWeight': workouts[3].getWeight(),
-      'legPressReps': workouts[3].getReps(),
-      'legPressSets': workouts[3].getSets(),
-      'benchPressWeight': workouts[4].getWeight(),
-      'benchPressReps': workouts[4].getReps(),
-      'benchPressSets': workouts[4].getSets(),
-      'lateralPulldownWeight': workouts[5].getWeight(),
-      'lateralPulldownReps': workouts[5].getReps(),
-      'lateralPulldownSets': workouts[5].getSets(),
-      'bicepCurlWeight': workouts[6].getWeight(),
-      'bicepCurlReps': workouts[6].getReps(),
-      'bicepCurlSets': workouts[6].getSets(),
-      'tricepExtensionWeight': workouts[7].getWeight(),
-      'tricepExtensionReps': workouts[7].getReps(),
-      'tricepExtensionSets': workouts[7].getSets(),
+      'deadLiftWeight': deadLiftWeight,
+      'deadLiftReps': deadLiftReps,
+      'backSquatWeight': backSquatWeight,
+      'backSquatReps': backSquatReps,
+      'hipThrustWeight': hipThrustWeight,
+      'hipThrustReps': hipThrustReps,
+      'legPressWeight': legPressWeight,
+      'legPressReps': legPressReps,
+      'benchPressWeight': benchPressWeight,
+      'benchPressReps': benchPressReps,
+      'lateralPulldownWeight': lateralPulldownWeight,
+      'lateralPulldownReps': lateralPulldownReps,
+      'bicepCurlWeight': bicepCurlWeight,
+      'bicepCurlReps': bicepCurlReps,
+      'tricepExtensionWeight': tricepExtensionWeight,
+      'tricepExtensionReps': tricepExtensionReps,
     });
   }
 
@@ -48,83 +51,181 @@ class DatabaseService {
     return snapshot.docs.map((doc){
       return Weightlifting(
           sport: doc.get('sport') ?? '',
-          date: doc.get('date') ?? DateTime.now(),
-          listExercises: [
-            Exercise(
-              name: 'deadLift',
-              weight: doc.get('deadLiftWeight') ?? 0,
-              reps: doc.get('deadLiftReps') ?? 0,
-              sets: doc.get('deadLiftSets') ?? 0
-            ),
-            Exercise(
-                name: 'backSquat',
-                weight: doc.get('backSquatWeight') ?? 0,
-                reps: doc.get('backSquatReps') ?? 0,
-                sets: doc.get('backSquatSets') ?? 0
-            ),
-            Exercise(
-                name: 'hipThrust',
-                weight: doc.get('hipThrustWeight') ?? 0,
-                reps: doc.get('hipThrustReps') ?? 0,
-                sets: doc.get('hipThrustSets') ?? 0
-            ),
-            Exercise(
-                name: 'legPress',
-                weight: doc.get('legPressWeight') ?? 0,
-                reps: doc.get('legPressReps') ?? 0,
-                sets: doc.get('legPressSets') ?? 0
-            ),
-            Exercise(
-                name: 'benchPress',
-                weight: doc.get('benchPressWeight') ?? 0,
-                reps: doc.get('benchPressReps') ?? 0,
-                sets: doc.get('benchPressSets') ?? 0
-            ),
-            Exercise(
-                name: 'lateralPulldown',
-                weight: doc.get('lateralPulldownWeight') ?? 0,
-                reps: doc.get('lateralPulldownReps') ?? 0,
-                sets: doc.get('lateralPulldownSets') ?? 0
-            ),
-            Exercise(
-                name: 'bicepCurl',
-                weight: doc.get('bicepCurlWeight') ?? 0,
-                reps: doc.get('bicepCurlReps') ?? 0,
-                sets: doc.get('bicepCurlSets') ?? 0
-            ),
-            Exercise(
-                name: 'tricepExtension',
-                weight: doc.get('tricepExtensionWeight') ?? 0,
-                reps: doc.get('tricepExtensionReps') ?? 0,
-                sets: doc.get('tricepExtensionSets') ?? 0
-            )
-          ],
-
-          /*deadLiftWeight: doc.get('deadLiftWeight') ?? 0,
-        deadLiftReps: doc.get('deadLiftReps') ?? 0,
-        backSquatWeight: doc.get('backSquatWeight') ?? 0,
-        backSquatReps: doc.get('backSquatReps') ?? 0,
-        hipThrustWeight: doc.get('hipThrustWeight') ?? 0,
-        hipThrustReps: doc.get('hipThrustReps') ?? 0,
-        legPressWeight: doc.get('legPressWeight') ?? 0,
-        legPressReps: doc.get('legPressReps') ?? 0,
-        benchPressWeight: doc.get('benchPressWeight') ?? 0,
-        benchPressReps: doc.get('benchPressReps') ?? 0,
-        lateralPulldownWeight: doc.get('lateralPulldownWeight') ?? 0,
-        lateralPulldownReps: doc.get('lateralPulldownReps') ?? 0,
-        bicepCurlWeight: doc.get('bicepCurlWeight') ?? 0,
-        bicepCurlReps: doc.get('bicepCurlReps') ?? 0,
-        tricepExtensionWeight: doc.get('tricepExtensionWeight') ?? 0,
-        tricepExtensionReps: doc.get('tricepExtensionReps') ?? 0*/
+          date: doc.get('date') ?? Timestamp.now(),
+          deadLiftWeight: doc.get('deadLiftWeight') ?? 0,
+          deadLiftReps: doc.get('deadLiftReps') ?? 0,
+          backSquatWeight: doc.get('backSquatWeight') ?? 0,
+          backSquatReps: doc.get('backSquatReps') ?? 0,
+          hipThrustWeight: doc.get('hipThrustWeight') ?? 0,
+          hipThrustReps: doc.get('hipThrustReps') ?? 0,
+          legPressWeight: doc.get('legPressWeight') ?? 0,
+          legPressReps: doc.get('legPressReps') ?? 0,
+          benchPressWeight: doc.get('benchPressWeight') ?? 0,
+          benchPressReps: doc.get('benchPressReps') ?? 0,
+          lateralPulldownWeight: doc.get('lateralPulldownWeight') ?? 0,
+          lateralPulldownReps: doc.get('lateralPulldownReps') ?? 0,
+          bicepCurlWeight: doc.get('bicepCurlWeight') ?? 0,
+          bicepCurlReps: doc.get('bicepCurlReps') ?? 0,
+          tricepExtensionWeight: doc.get('tricepExtensionWeight') ?? 0,
+          tricepExtensionReps: doc.get('tricepExtensionReps') ?? 0
 
       );
 
     }).toList();
   }
 
+
   Stream<List<Weightlifting?>> get WLlogs {
-    return usersCollection.snapshots()
+    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where('deadLiftWeight', isEqualTo: 2021).snapshots()
         .map(_WLlistFromSnapshot);
+  }
+
+
+  //weights list
+  //make one funtion for each excericse
+
+  List<Weights?> _DeadliftWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+        date: doc.get('date') ?? DateTime.now(),
+        weight: doc.get('deadLiftWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _BackSquatWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('backSquatWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _HipThrustWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('hipThrustWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _LegPressWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('legPressWeight') ?? 0);
+    }).toList();
+  }
+
+
+  List<Weights?> _BenchPressWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('benchPressWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _LateralPulldownWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('lateralPulldownWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _BicepCurlWeightsList(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('bicepCurlWeight') ?? 0);
+    }).toList();
+  }
+
+  List<Weights?> _TricepExtensionWeight(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('tricepExtensionWeight') ?? 0);
+    }).toList();
+  }
+
+
+  //creates new running document
+  Future newRunningLog(String sport, DateTime date, int heartrate, String runType, int calories, String effortLevel, int time, int distance) async {
+    return await usersCollection.doc(uid).collection("Running").doc().set({
+      'sport': sport,
+      'date': date,
+      'heartrate': heartrate,
+      'runType': runType,
+      'calories': calories,
+      'effortLevel': effortLevel,
+      'time': time,
+      'distance': distance,
+    });
+  }
+
+  //user list from snapshot
+  List<Running?> _RlistFromSnapshot(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Running(
+          sport: doc.get('sport') ?? '',
+          date: doc.get('date') ?? Timestamp.now(),
+          heartrate: doc.get('heartrate') ?? 0,
+          runType: doc.get('runType') ?? '',
+          calories: doc.get('calories') ?? 0,
+          effortLevel: doc.get('effortLevel') ?? '',
+          time: doc.get('time') ?? 0,
+          distance: doc.get('distance') ?? 0
+
+      );
+
+    }).toList();
+  }
+
+  Stream<List<Running?>> get RLogs {
+    return usersCollection.snapshots()
+        .map(_RlistFromSnapshot);
+  }
+
+
+  //creates new swimming document
+  Future newSwimmingLog(String sport, DateTime date, int splitTime, int setTime, int warmupDistance, int workoutDistance, int warmpdownDistance, int repeats, String drylands) async {
+    return await usersCollection.doc(uid).collection("Swimming").doc().set({
+      'sport': sport,
+      'date': date,
+      'splitTime': splitTime,
+      'setTime': setTime,
+      'warmupDistance': warmupDistance,
+      'workoutDistance': workoutDistance,
+      'warmpdownDistance': warmpdownDistance,
+      'repeats': repeats,
+      'drylands': drylands,
+
+    });
+  }
+
+  //user list from snapshot
+  List<Swimming?> _SlistFromSnapshot(QuerySnapshot snapshot){
+    return snapshot.docs.map((doc){
+      return Swimming(
+          sport: doc.get('sport') ?? '',
+          date: doc.get('date') ?? Timestamp.now(),
+          splitTime: doc.get('splitTime') ?? 0,
+          setTime: doc.get('setTime') ?? 0,
+          warmupDistance: doc.get('warmupDistance') ?? 0,
+          workoutDistance: doc.get('workoutDistance') ?? 0,
+          warmdownDistance: doc.get('warmdownDistance') ?? 0,
+          repeats: doc.get('repeats') ?? 0,
+          drylands: doc.get('drylands') ?? ''
+
+      );
+
+    }).toList();
+  }
+
+  Stream<List<Swimming?>> get SLogs {
+    return usersCollection.snapshots()
+        .map(_SlistFromSnapshot);
   }
 
 
