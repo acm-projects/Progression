@@ -178,15 +178,15 @@ class DatabaseService {
   List<double> NormalizedData (List<Weights?> weights) {
     final List<int> array = [];
     for(var i = 0 ; i < weights.length; i++) {
-      array[i] = weights[i]!.weight;
+      array.add(weights[i]!.weight);
     }
     final lower = array.reduce(min);
     final upper = array.reduce(max);
     final List<double> normalized = [];
 
-    array.forEach((element) => element < 0
-        ? normalized.add(-(element / lower))
-        : normalized.add(element / upper));
+    for(var i = 0 ; i < array.length; i++){
+      normalized.add((array[i] - lower) / (upper - lower));
+    }
     return normalized;
   }
 
