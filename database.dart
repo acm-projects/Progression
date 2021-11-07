@@ -95,9 +95,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get DLWeights {
-    return usersCollection.snapshots()
-        .map(_DeadliftWeightsList);
+  List<double>  DLWeights() {
+    List <double> weights = usersCollection.snapshots()
+        .map(_DeadliftWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
@@ -110,9 +111,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BSWeights {
-    return usersCollection.snapshots()
-        .map(_BackSquatWeightsList);
+  List<double>  BSWeights (){
+  List <double> weights = usersCollection.snapshots()
+        .map(_BackSquatWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _HipThrustWeightsList(QuerySnapshot snapshot){
@@ -125,9 +127,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get HTWeights {
-    return usersCollection.snapshots()
-        .map(_HipThrustWeightsList);
+  List<double>  HTWeights (){
+  List <double> weights = usersCollection.snapshots()
+        .map(_HipThrustWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _LegPressWeightsList(QuerySnapshot snapshot){
@@ -140,9 +143,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get LPWeights {
-    return usersCollection.snapshots()
-        .map(_LegPressWeightsList);
+   List<double> LPWeights () {
+    List <double> weights = usersCollection.snapshots()
+        .map(_LegPressWeightsList) as List<double>;
+    return weights;
   }
 
 
@@ -156,9 +160,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BPWeights {
-    return usersCollection.snapshots()
-        .map(_BenchPressWeightsList);
+  List<double> BPWeights () {
+    List <double> weights = usersCollection.snapshots()
+        .map(_BenchPressWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _LateralPulldownWeightsList(QuerySnapshot snapshot){
@@ -171,9 +176,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get LateralPDWeights {
-    return usersCollection.snapshots()
-        .map(_LateralPulldownWeightsList);
+  List<double> LateralPDWeights () {
+  List <double> weights = usersCollection.snapshots()
+        .map(_LateralPulldownWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _BicepCurlWeightsList(QuerySnapshot snapshot){
@@ -186,9 +192,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BCWeights {
-    return usersCollection.snapshots()
-        .map(_BicepCurlWeightsList);
+  List<double> BCWeights() {
+    List <double> weights =usersCollection.snapshots()
+        .map(_BicepCurlWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _TricepExtensionWeight(QuerySnapshot snapshot){
@@ -201,9 +208,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get TEWeights {
-    return usersCollection.snapshots()
-        .map(_TricepExtensionWeight);
+  List<double> TEWeights() {
+    List <double> weights = usersCollection.snapshots()
+        .map(_TricepExtensionWeight) as List<double>;
+    return weights;
   }
 
 
@@ -220,6 +228,44 @@ class DatabaseService {
       normalized.add((array[i] - lower) / (upper - lower));
     }
     return normalized;
+  }
+
+
+  List<double> ReturnList (String key){
+    List<double> values = [];
+    if(key == "Dead Lift"){
+      values = DLWeights();
+      return values;
+    }
+    else if (key == "Back Squat"){
+      values = BSWeights();
+      return values;
+    }
+    else if (key == "Hip Thrust") {
+      values = HTWeights();
+      return values;
+    }
+    else if (key == "Leg Press") {
+      values = LPWeights();
+      return values;
+    }
+    else if (key == "Bench Press") {
+      values = BPWeights();
+      return values;
+    }
+    else if (key == "Lateral Pulldown ") {
+      values = LateralPDWeights();
+      return values;
+    }
+    else if (key == "Bicep Curl") {
+      values = BCWeights();
+      return values;
+    }
+    else if (key == "Tricep Extension") {
+      values = TEWeights();
+      return values;
+    }
+
   }
 
   //gets the log based on a given date --> to be used with calendar
