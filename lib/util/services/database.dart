@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:progression/util/package_utils/globals.dart';
 import '../exercise.dart';
 import '../weightlifting.dart';
+import '../selected_exercise.dart';
 
 class DatabaseService {
 
@@ -11,6 +13,45 @@ class DatabaseService {
   //collection reference
   final CollectionReference usersCollection = FirebaseFirestore.instance
       .collection('users');
+
+  // Creates a store of selected Exercises
+  Future selectedExerciseLog(List<List<SelectedExercise>> list) async {
+    return await usersCollection.doc(uid).set(
+      {
+        'Dead Lift': list[0][0].selected,
+        'Back Squat': list[0][1].selected,
+        'Hip Thrust': list[0][2].selected,
+        'Leg Press': list[0][3].selected,
+        'Bench Press': list[0][4].selected,
+        'Lateral Pulldown': list[0][5].selected,
+        'Bicep Curl': list[0][6].selected,
+        'Tricep Extension': list[0][7].selected,
+
+      });
+  }
+
+  void setExercises (DocumentSnapshot getDocumentSnapshotForExercise) async {
+      currentUserSelf.exercises[0][0].selected = await getExerciseValue(keyValue: "Dead Lift");
+      currentUserSelf.exercises[0][1].selected = await getExerciseValue(keyValue: "Back Squat");
+      currentUserSelf.exercises[0][2].selected = await getExerciseValue(keyValue: "Hip Thrust");
+      currentUserSelf.exercises[0][3].selected = await getExerciseValue(keyValue: "Leg Press");
+      currentUserSelf.exercises[0][4].selected = await getExerciseValue(keyValue: "Bench Press");
+      currentUserSelf.exercises[0][5].selected = await getExerciseValue(keyValue: "Lateral Pulldown");
+      currentUserSelf.exercises[0][6].selected = await getExerciseValue(keyValue: "Bicep Curl");
+      currentUserSelf.exercises[0][7].selected = await getExerciseValue(keyValue: "Tricep Extension");
+  }
+
+
+  Future<DocumentSnapshot> getDocumentSnapshotForExercise() async
+  {
+    return await FirebaseFirestore.instance.collection('users').doc(uid).get();
+  }
+
+  Future<bool> getExerciseValue({required String keyValue}) async {
+    DocumentSnapshot documentSnapshot = await getDocumentSnapshotForExercise();
+    return (documentSnapshot.data() as Map<String, dynamic>)[keyValue];
+  }
+  
 
   //creates new weightlifting document
   Future newWeightliftingLog(String sport, DateTime date,
