@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/option_selector.dart';
 import 'package:progression/pages/main_page.dart';
-import 'package:progression/pages/new_log.dart';
 import '../UI/background.dart';
 import '../UI/page_change_button.dart';
 
@@ -39,9 +38,9 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             Container (
             width: 370,
             height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  borderRadius: BorderRadius.all(Radius.circular(10))
               ),
             child:
                 Text(

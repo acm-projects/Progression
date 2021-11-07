@@ -25,8 +25,7 @@ class _GraphScreenState extends State<GraphScreen> {
               child: LineGraph(
                 features: widget.features,
                 size: const Size(400, 300),
-                labelX: const ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
-                labelY: const ['25%', '45%', '65%', '75%', '85%', '100%'],
+                labelX: const [ 'Month of November'],
                 showDescription: false,
                 graphColor: Colors.black87,
               ),

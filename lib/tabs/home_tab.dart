@@ -1,20 +1,26 @@
+import 'dart:core';
+import 'package:draw_graph/draw_graph.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:progression/UI/graph.dart';
+import 'package:progression/util/exercise.dart';
 import '../UI/background.dart';
 import '../UI/swiper.dart';
+import '../util/package_utils/globals.dart';
+
 
 class HomeTab extends StatefulWidget {
-  HomeTab({Key? key}) : super(key: key);
+  const HomeTab({Key? key}) : super(key: key);
 
-  final List<Widget> list = [
 
-  ];
 
   @override
   _HomeTabState createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
+
+  List<Widget> list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +65,7 @@ class _HomeTabState extends State<HomeTab> {
                       ),
                   ),
                   MakeSwiper(
-                      steps: widget.list
+                      steps: list,
 
                   ),
                 ],
@@ -71,4 +77,19 @@ class _HomeTabState extends State<HomeTab> {
       ],
     );
   }
+}
+
+List<Widget> returnGraphs () {
+  List<Widget> listWidget = [];
+  for (var element in currentUserSelf.exercises[0]) {
+    if (element.selected == true)
+    {
+      listWidget.add (
+        GraphScreen(
+          features: returnList(element.name)
+        ),
+      );
+    }
+  }
+  return listWidget;
 }

@@ -3,6 +3,8 @@ import 'package:progression/util/package_utils/globals.dart';
 import '../exercise.dart';
 import '../weightlifting.dart';
 import '../selected_exercise.dart';
+import '../weights.dart';
+import 'dart:math';
 
 class DatabaseService {
 
@@ -137,4 +139,156 @@ class DatabaseService {
         .snapshots()
         .map(_wLlistFromSnapshot);
   }
+
+  List<double> NormalizedData (List<Weights?> weights) {
+    final List<int> array = [];
+    for(var i = 0 ; i < weights.length; i++) {
+      array.add(weights[i]!.weight);
+    }
+    final lower = array.reduce(min);
+    final upper = array.reduce(max);
+    final List<double> normalized = [];
+
+    for(var i = 0 ; i < array.length; i++){
+      normalized.add((array[i] - lower) / (upper - lower));
+    }
+    return normalized;
+  }
+
+  //gets the log based on a given date --> to be used with calendar
+  List<Weightlifting?> calendarLog () {
+    List <Weightlifting?> weights = [];
+    weights =  FirebaseFirestore.instance.collectionGroup('Weightlifting').snapshots()
+        .map(_wLlistFromSnapshot) as List<Weightlifting?>;
+    return weights;
+  }
+
+  List<double> _DeadliftWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('deadLiftWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get DLWeights {
+    return usersCollection.snapshots()
+        .map(_DeadliftWeightsList);
+  }
+
+  List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('backSquatWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get BSWeights {
+    return usersCollection.snapshots()
+        .map(_BackSquatWeightsList);
+  }
+
+  List<double> _HipThrustWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('hipThrustWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get HTWeights {
+    return usersCollection.snapshots()
+        .map(_HipThrustWeightsList);
+  }
+
+  List<double> _LegPressWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('legPressWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get LPWeights {
+    return usersCollection.snapshots()
+        .map(_LegPressWeightsList);
+  }
+
+
+  List<double> _BenchPressWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('benchPressWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get BPWeights {
+    return usersCollection.snapshots()
+        .map(_BenchPressWeightsList);
+  }
+
+  List<double> _LateralPulldownWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('lateralPulldownWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get LateralPDWeights {
+    return usersCollection.snapshots()
+        .map(_LateralPulldownWeightsList);
+  }
+
+  List<double> _BicepCurlWeightsList(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('bicepCurlWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get BCWeights {
+    return usersCollection.snapshots()
+        .map(_BicepCurlWeightsList);
+  }
+
+  List<double> _TricepExtensionWeight(QuerySnapshot snapshot){
+    List <Weights?> weights = snapshot.docs.map((doc){
+      Weights(
+          date: doc.get('date') ?? DateTime.now(),
+          weight: doc.get('tricepExtensionWeight') ?? 0);
+    }).toList();
+    final List<double> normalized = NormalizedData(weights);
+    return normalized;
+  }
+
+  Stream<List<double>> get TEWeights {
+    return usersCollection.snapshots()
+        .map(_TricepExtensionWeight);
+  }
+
+  //gets the log based on a given date --> to be used with calendar
+  Stream<List<Weightlifting?>> CalendarLog (int day, int month, int year) {
+    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where('date', isEqualTo: DateTime.utc(year, month, day)).snapshots()
+        .map(_wLlistFromSnapshot);
+  }
+
+
 }
