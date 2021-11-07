@@ -224,6 +224,12 @@ class DatabaseService {
         .map(_TricepExtensionWeight);
   }
 
+  //gets the log based on a given date --> to be used with calendar
+  Stream<List<Weightlifting?>> CalendarLog (int day, int month, int year) {
+    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where('date', isEqualTo: DateTime.utc(year, month, day)).snapshots()
+        .map(_WLlistFromSnapshot);
+  }
+
 
 
 
