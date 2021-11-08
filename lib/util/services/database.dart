@@ -140,20 +140,6 @@ class DatabaseService {
         .map(_wLlistFromSnapshot);
   }
 
-  List<double> NormalizedData (List<Weights?> weights) {
-    final List<int> array = [];
-    for(var i = 0 ; i < weights.length; i++) {
-      array.add(weights[i]!.weight);
-    }
-    final lower = array.reduce(min);
-    final upper = array.reduce(max);
-    final List<double> normalized = [];
-
-    for(var i = 0 ; i < array.length; i++){
-      normalized.add((array[i] - lower) / (upper - lower));
-    }
-    return normalized;
-  }
 
   //gets the log based on a given date --> to be used with calendar
   List<Weightlifting?> calendarLog () {
@@ -173,9 +159,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get DLWeights {
-    return usersCollection.snapshots()
+  List<double> DLWeights() {
+    List <double> weights = usersCollection.snapshots()
         .map(_DeadliftWeightsList);
+    return weights;
   }
 
   List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
@@ -188,9 +175,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BSWeights {
-    return usersCollection.snapshots()
-        .map(_BackSquatWeightsList);
+  List<double>  BSWeights (){
+    List <double> weights = usersCollection.snapshots()
+        .map(_BackSquatWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _HipThrustWeightsList(QuerySnapshot snapshot){
@@ -203,9 +191,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get HTWeights {
-    return usersCollection.snapshots()
-        .map(_HipThrustWeightsList);
+  List<double>  HTWeights (){
+    List <double> weights = usersCollection.snapshots()
+        .map(_HipThrustWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _LegPressWeightsList(QuerySnapshot snapshot){
@@ -218,9 +207,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get LPWeights {
-    return usersCollection.snapshots()
-        .map(_LegPressWeightsList);
+  List<double> LPWeights () {
+    List <double> weights = usersCollection.snapshots()
+        .map(_LegPressWeightsList) as List<double>;
+    return weights;
   }
 
 
@@ -234,9 +224,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BPWeights {
-    return usersCollection.snapshots()
-        .map(_BenchPressWeightsList);
+  List<double> BPWeights () {
+    List <double> weights = usersCollection.snapshots()
+        .map(_BenchPressWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _LateralPulldownWeightsList(QuerySnapshot snapshot){
@@ -249,9 +240,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get LateralPDWeights {
-    return usersCollection.snapshots()
-        .map(_LateralPulldownWeightsList);
+  List<double> LateralPDWeights () {
+    List <double> weights = usersCollection.snapshots()
+        .map(_LateralPulldownWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _BicepCurlWeightsList(QuerySnapshot snapshot){
@@ -264,9 +256,10 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get BCWeights {
-    return usersCollection.snapshots()
-        .map(_BicepCurlWeightsList);
+  List<double> BCWeights() {
+    List <double> weights =usersCollection.snapshots()
+        .map(_BicepCurlWeightsList) as List<double>;
+    return weights;
   }
 
   List<double> _TricepExtensionWeight(QuerySnapshot snapshot){
@@ -279,16 +272,64 @@ class DatabaseService {
     return normalized;
   }
 
-  Stream<List<double>> get TEWeights {
-    return usersCollection.snapshots()
-        .map(_TricepExtensionWeight);
+  List<double> TEWeights() {
+    List <double> weights = usersCollection.snapshots()
+        .map(_TricepExtensionWeight) as List<double>;
+    return weights;
   }
+
+
+  List<double> NormalizedData (List<Weights?> weights) {
+    final List<int> array = [];
+    for(var i = 0 ; i < weights.length; i++) {
+      array.add(weights[i]!.weight);
+    }
+    final lower = array.reduce(min);
+    final upper = array.reduce(max);
+    final List<double> normalized = [];
+
+    for(var i = 0 ; i < array.length; i++){
+      normalized.add((array[i] - lower) / (upper - lower));
+    }
+    return normalized;
+  }
+
+
+  List<double> returnList (String key){
+    List<double> values = [];
+    if(key == "Dead Lift"){
+      values = DLWeights();
+    }
+    else if (key == "Back Squat"){
+      values = BSWeights();
+    }
+    else if (key == "Hip Thrust") {
+      values = HTWeights();
+    }
+    else if (key == "Leg Press") {
+      values = LPWeights();
+    }
+    else if (key == "Bench Press") {
+      values = BPWeights();
+    }
+    else if (key == "Lateral Pulldown ") {
+      values = LateralPDWeights();
+    }
+    else if (key == "Bicep Curl") {
+      values = BCWeights();
+    }
+    else if (key == "Tricep Extension") {
+      values = TEWeights();
+    }
+  return values;
+  }
+
 
   //gets the log based on a given date --> to be used with calendar
   Stream<List<Weightlifting?>> CalendarLog (int day, int month, int year) {
-    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where('date', isEqualTo: DateTime.utc(year, month, day)).snapshots()
+    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where(
+        'date', isEqualTo: DateTime.utc(year, month, day)).snapshots()
         .map(_wLlistFromSnapshot);
   }
-
 
 }

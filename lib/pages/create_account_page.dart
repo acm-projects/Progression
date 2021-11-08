@@ -6,17 +6,13 @@ import 'package:progression/util/services/auth.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
-import '../util/weightlifting.dart';
-import './metric_selection.dart';
 
 class CreateAccountPage extends StatefulWidget {
   CreateAccountPage({Key? key}) : super(key: key);
 
   final TextEditingController emailText = TextEditingController(text: 'Email');
-  final TextEditingController passwordText = TextEditingController(
-      text: 'Password');
-  final TextEditingController password2Text = TextEditingController(
-      text: 'Password');
+  final TextEditingController passwordText = TextEditingController(text: 'Password');
+  final TextEditingController password2Text = TextEditingController(text: 'Password');
 
   @override
   _CreateAccountPageState createState() => _CreateAccountPageState();
@@ -30,7 +26,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+
+    return Form (
         key: _formKey,
         child: Stack(
           children: <Widget>[
@@ -55,20 +52,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 Text(
                   'Create Account',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline1,
+                  style: Theme.of(context).textTheme.headline1,
                 ),
 
                 const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
 
                 Text(
                   error,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyText1,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
 
                 const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
@@ -83,7 +74,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   child: TextEntry(
                     hint: 'Email',
                     text: widget.emailText,
-                    onChanged: (hint) {},),
+                    onChanged: (hint) {
+                      if (widget.emailText.text == '') {
+                        widget.emailText.text = 'Email';
+                      }
+                    },),
 
                 ),
 
@@ -99,7 +94,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   child: TextEntry(
                     hint: 'Password',
                     text: widget.passwordText,
-                    onChanged: (hint) {},),
+                    onChanged: (hint) {
+                      if (widget.passwordText.text == '') {
+                        widget.passwordText.text = 'Password';
+                      }
+                    },),
 
                 ),
 
@@ -115,7 +114,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   child: TextEntry(
                     hint: 'Password',
                     text: widget.password2Text,
-                    onChanged: (hint) {},),
+                    onChanged: (hint) {
+                      if (widget.password2Text.text == '') {
+                        widget.password2Text.text = 'Password';
+                      }
+                    },),
 
                 ),
 
@@ -129,32 +132,21 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       width: 160,
                       height: 2,
                       child: Container(
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onBackground,
+                        color: Theme.of(context).colorScheme.onBackground,
 
                       ),
                     ),
-                    const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                    const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                     Text(
                       'or',
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .bodyText1,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 4.0)),
+                    const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                     SizedBox(
                       width: 160,
                       height: 2,
                       child: Container(
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onBackground,
+                        color: Theme.of(context).colorScheme.onBackground,
 
                       ),
                     ),
@@ -168,22 +160,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   height: 50.0,
                   text: "Create",
                   onPressed: () async {
-                    if (widget.passwordText.text == widget.password2Text.text){
-                      if (_formKey.currentState!.validate ()) {
-                        dynamic result = await _auth.registerWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
-                        if (result == null) {
-                          error = 'Badly Formatted Email';
-                          }
-                        else {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MetricSelectionPage(entries: Weightlifting.listNames,)),
-                          );
-                        }
+                    if (_formKey.currentState!.validate()) {
+                      dynamic result = await _auth.registerWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
+                      if (result == null) {
+                        error = 'No user found with that email and password';
                       }
-                    }
-                    else {
-                      error = "Make sure your passwords match";
+                      else {
+                        Navigator.pop(context);
+                      }
                     }
                   },
                 ),

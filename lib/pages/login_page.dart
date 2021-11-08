@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:progression/util/package_utils/globals.dart';
+import 'package:progression/util/services/database.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
@@ -62,7 +63,7 @@ class LoginPageState extends State<LoginPage> {
                   //
                   // ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 70.0)),
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
 
                   Container(
                     height: 450,
@@ -124,6 +125,7 @@ class LoginPageState extends State<LoginPage> {
                               }
                               else {
                                 currentUserSelf = result;
+                                currentUserSelf.exercises[0][0].selected;
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const MainPage())

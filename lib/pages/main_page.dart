@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 class _MainPage extends State<MainPage> {
 
   static final List<Widget> _list = [
-    HomeTab(),
+    const HomeTab(),
     const CalendarTab(),
     const NewLogTab(),
   ];

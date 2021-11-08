@@ -8,8 +8,11 @@ class MakeSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
+
+      body: SizedBox(
+        height: 600,
+        width: 500,
+        child:
           Swiper(
             itemBuilder: (BuildContext context, int index) {
               return steps[index];
@@ -21,7 +24,6 @@ class MakeSwiper extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             pagination: const SwiperPagination(),
           ),
-        ],
       ),
     );
   }
