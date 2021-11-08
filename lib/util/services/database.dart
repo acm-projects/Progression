@@ -161,9 +161,12 @@ class DatabaseService {
 
   List<double> DLWeights() {
     List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_DeadliftWeightsList).listen((List<double> weights1) {
-      weights = weights1;
+    Stream<List<double>> stream = usersCollection.snapshots()
+        .map(_DeadliftWeightsList);
+    stream.listen((weight1) {
+      for (int x = 0; x < weight1.length; x++){
+        weights.add(weight1[x]);
+      }
     });
     return weights;
 
@@ -176,6 +179,28 @@ class DatabaseService {
         weights.add(weight);
       }
     }*/
+  }
+
+  static Future<List<Year>> getYears() async {
+    Completer<List<int>> completer = Completer<List<int>>();
+
+    List<int> years = List<int>();
+
+    FirebaseDatabase.instance
+        .reference()
+        .child("year")
+        .once()
+        .then((DataSnapshot snapshot) {
+      //here i iterate and create the list of objects
+      Map<dynamic, dynamic> yearMap = snapshot.value;
+      yearMap.forEach((key, value) {
+        years.add(Year.fromJson(key, value));
+      });
+
+      completer.complete(years);
+    });
+
+    return completer.future;
   }
 
   List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
@@ -351,6 +376,7 @@ class DatabaseService {
   }
 
 
+
   List<double> returnList (String key){
     List<double> values = [];
     if(key == "Dead Lift"){
@@ -377,9 +403,8 @@ class DatabaseService {
     else if (key == "Tricep Extension") {
       values = TEWeights();
     }
-  return values;
+    return values;
   }
-
 
   //gets the log based on a given date --> to be used with calendar
   Stream<List<Weightlifting?>> CalendarLog (int day, int month, int year) {
