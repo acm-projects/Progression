@@ -96,9 +96,9 @@ List<Widget> returnGraphs () {
   for (var element in currentUserSelf.exercises[0]) {
       listWidget.add (
         GraphScreen(
+          text: element.name,
           features: [
             Feature (
-              title: element.name,
               data: DatabaseService(uid: currentUser!.uid).returnList(element.name),
             )
           ]

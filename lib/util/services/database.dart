@@ -89,42 +89,42 @@ class DatabaseService {
         date: doc.get('date') ?? DateTime.now(),
         listExercises: [
           Exercise(
-              name: 'deadLift',
+              name: 'Dead Lift',
               weight: doc.get('deadLiftWeight') ?? 0,
               reps: doc.get('deadLiftReps') ?? 0
           ),
           Exercise(
-              name: 'backSquat',
+              name: 'Back Squat',
               weight: doc.get('backSquatWeight') ?? 0,
               reps: doc.get('backSquatReps') ?? 0
           ),
           Exercise(
-              name: 'hipThrust',
+              name: 'Hip Thrust',
               weight: doc.get('hipThrustWeight') ?? 0,
               reps: doc.get('hipThrustReps') ?? 0
           ),
           Exercise(
-              name: 'legPress',
+              name: 'Leg Press',
               weight: doc.get('legPressWeight') ?? 0,
               reps: doc.get('legPressReps') ?? 0
           ),
           Exercise(
-              name: 'benchPress',
+              name: 'Bench Press',
               weight: doc.get('benchPressWeight') ?? 0,
               reps: doc.get('benchPressReps') ?? 0
           ),
           Exercise(
-              name: 'lateralPulldown',
+              name: 'Lateral Pulldown',
               weight: doc.get('lateralPulldownWeight') ?? 0,
               reps: doc.get('lateralPulldownReps') ?? 0
           ),
           Exercise(
-              name: 'bicepCurl',
+              name: 'Bicep Curl',
               weight: doc.get('bicepCurlWeight') ?? 0,
               reps: doc.get('bicepCurlReps') ?? 0
           ),
           Exercise(
-              name: 'tricepExtension',
+              name: 'Tricep Extension',
               weight: doc.get('tricepExtensionWeight') ?? 0,
               reps: doc.get('tricepExtensionReps') ?? 0
           )
@@ -160,9 +160,22 @@ class DatabaseService {
   }
 
   List<double> DLWeights() {
-    List <double> weights = usersCollection.snapshots()
-        .map(_DeadliftWeightsList);
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_DeadliftWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+
+
+    /*for (int x = 0; x < weights.length; x++){
+      print(weights[x]);
+    }
+    (List<Weight> weights1){
+      for (Weight weight in weights1){
+        weights.add(weight);
+      }
+    }*/
   }
 
   List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
@@ -176,9 +189,15 @@ class DatabaseService {
   }
 
   List<double>  BSWeights (){
-    List <double> weights = usersCollection.snapshots()
-        .map(_BackSquatWeightsList) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_BackSquatWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_BackSquatWeightsList) as List<double>;
+    return weights;*/
   }
 
   List<double> _HipThrustWeightsList(QuerySnapshot snapshot){
@@ -192,9 +211,15 @@ class DatabaseService {
   }
 
   List<double>  HTWeights (){
-    List <double> weights = usersCollection.snapshots()
-        .map(_HipThrustWeightsList) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_HipThrustWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_HipThrustWeightsList) as List<double>;
+    return weights;*/
   }
 
   List<double> _LegPressWeightsList(QuerySnapshot snapshot){
@@ -208,9 +233,15 @@ class DatabaseService {
   }
 
   List<double> LPWeights () {
-    List <double> weights = usersCollection.snapshots()
-        .map(_LegPressWeightsList) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_LegPressWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_LegPressWeightsList) as List<double>;
+    return weights;*/
   }
 
 
@@ -225,9 +256,15 @@ class DatabaseService {
   }
 
   List<double> BPWeights () {
-    List <double> weights = usersCollection.snapshots()
-        .map(_BenchPressWeightsList) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_BenchPressWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_BenchPressWeightsList) as List<double>;
+    return weights;*/
   }
 
   List<double> _LateralPulldownWeightsList(QuerySnapshot snapshot){
@@ -241,9 +278,15 @@ class DatabaseService {
   }
 
   List<double> LateralPDWeights () {
-    List <double> weights = usersCollection.snapshots()
-        .map(_LateralPulldownWeightsList) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_LateralPulldownWeightsList).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_LateralPulldownWeightsList) as List<double>;
+    return weights;*/
   }
 
   List<double> _BicepCurlWeightsList(QuerySnapshot snapshot){
@@ -257,9 +300,16 @@ class DatabaseService {
   }
 
   List<double> BCWeights() {
-    List <double> weights =usersCollection.snapshots()
-        .map(_BicepCurlWeightsList) as List<double>;
+    List <double> weights = [];
+    Stream<List<double>> stream = usersCollection.snapshots()
+        .map(_BicepCurlWeightsList);
+    stream.listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_BicepCurlWeightsList) as List<double>;
+    return weights;*/
   }
 
   List<double> _TricepExtensionWeight(QuerySnapshot snapshot){
@@ -273,9 +323,15 @@ class DatabaseService {
   }
 
   List<double> TEWeights() {
-    List <double> weights = usersCollection.snapshots()
-        .map(_TricepExtensionWeight) as List<double>;
+    List <double> weights = [];
+    usersCollection.snapshots()
+        .map(_TricepExtensionWeight).listen((List<double> weights1) {
+      weights = weights1;
+    });
     return weights;
+    /*List <double> weights = usersCollection.snapshots()
+        .map(_TricepExtensionWeight) as List<double>;
+    return weights;*/
   }
 
 
