@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
               // A smaller body size
               bodyText1: const TextStyle(fontSize: 24.0, fontFamily: 'Open Sans',),
               // Slightly larger body size
-              bodyText2: const TextStyle(fontSize: 20.0),
+              bodyText2: TextStyle(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface),
 
               button: TextStyle(fontSize: 32.0, fontFamily: 'Open Sans', color: Theme.of(context).colorScheme.onBackground),
             ),
