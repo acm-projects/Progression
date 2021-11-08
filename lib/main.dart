@@ -46,6 +46,8 @@ class MyApp extends StatelessWidget {
               surface: Color.fromRGBO(250, 250, 250, 1),
               // A solid black Color
               onBackground: Color.fromRGBO(0, 0, 0, 1),
+
+              onSurface: Color.fromRGBO(255,255,255,1),
             ),
 
             // Define the default font family
@@ -58,11 +60,13 @@ class MyApp extends StatelessWidget {
               // Smaller Header Font
               headline2: const TextStyle(fontSize: 30.0, fontStyle: FontStyle.italic),
               // Headline font that is underlined
-              headline3: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
+              headline3: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, decoration: TextDecoration.underline,),
               // A smaller body size
               bodyText1: const TextStyle(fontSize: 24.0, fontFamily: 'Open Sans',),
               // Slightly larger body size
               bodyText2: const TextStyle(fontSize: 20.0),
+
+              button: TextStyle(fontSize: 32.0, fontFamily: 'Open Sans', color: Theme.of(context).colorScheme.onBackground),
             ),
           ),
 

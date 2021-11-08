@@ -1,11 +1,12 @@
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
 import 'package:flutter/material.dart';
+import 'package:progression/util/package_utils/globals.dart';
+import 'package:progression/util/services/database.dart';
 
 class GraphScreen extends StatefulWidget {
-  const GraphScreen({Key? key, required this.features, required this.text}) : super(key: key);
+  const GraphScreen({Key? key, required this.text}) : super(key: key);
 
-  final List<Feature> features;
   final String text;
 
   @override
@@ -13,32 +14,68 @@ class GraphScreen extends StatefulWidget {
 }
 
 class _GraphScreenState extends State<GraphScreen> {
+  late Future<List<double>> getData;
+
+  @override
+  void initState() {
+    super.initState();
+    getData = returnData();
+    print('This is the data: $getData');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        body: Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      alignment: WrapAlignment.center,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(widget.text),
+            FutureBuilder<List<double>>(
+                future: getData,
+                builder: (context, AsyncSnapshot<List<double>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.data == null) {
+                      return const Text('No Data');
+                    } else {
+                      return SizedBox(
+                        height: 475,
+                        width: 500,
+                        child: LineGraph(
+                          features: [
+                            Feature(
+                              data: snapshot.data ?? [0, .4, .3, .6],
+                            ),
+                          ],
+                          size: const Size(500, 500),
+                          labelX: const [
+                            '11/1',
+                            '11/05',
+                            '11/10',
+                            '11/15',
+                            '11/20'
+                          ],
+                          labelY: const ['0', '50', '100', '150', '200'],
+                          showDescription: false,
+                          graphColor: Colors.black87,
+                        ),
+                      );
+                    }
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
+                }),
+          ],
+        ),
+      ],
+    ));
+  }
 
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget> [
-          Text(widget.text),
-          SizedBox(
-            height: 300,
-              width: 400,
-              child: LineGraph(
-                features: widget.features,
-                size: const Size(400, 250),
-                labelX: const ['11/1', '11/05', '11/10', '11/15', '11/20'],
-                labelY: const ['0', '50', '100', '150', '200'],
-                showDescription: false,
-                graphColor: Colors.black87,
-
-
-              ),
-          ),
-        ],
-      ),
-    );
+  Future<List<double>> returnData() async {
+    return await DatabaseService(uid: currentUser!.uid).returnList(widget.text);
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/stat_button.dart';
 import 'package:progression/pages/stat_entry_page.dart';
-import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 import '../util/weightlifting.dart';
@@ -21,6 +20,8 @@ class NewLogPage extends StatefulWidget {
 }
 
 class NewLogPageState extends State<NewLogPage> {
+  DateTime valueDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,28 +42,24 @@ class NewLogPageState extends State<NewLogPage> {
             padding: EdgeInsets.symmetric(vertical: 18.0),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(
-              width: 70,
-              height: 30,
-              child: Container(
-                child: Text('Date: ',
-                    style: Theme.of(context).textTheme.bodyText1,
-                    textAlign: TextAlign.center),
-                color: Theme.of(context).colorScheme.background,
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0),
+                child: Text("${valueDate.day.toString().padLeft(2,'0')}-${valueDate.month.toString().padLeft(2,'0')}-${valueDate.year}", style: Theme.of(context).textTheme.button,),
               ),
+              decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      width: 2.5,
+                    ),
+                  )),
+              width: 270,
             ),
-            const Padding(padding: EdgeInsets.only(
-              right: 10.0,
-            ),),
-            SizedBox(
-              height: 42,
-              width: 160,
-              child: TextEntry(
-                hint: ' ',
-                text: widget.date,
-                onChanged: (hint) {},
-              ),
-            ),
+            ElevatedButton(
+              child: const Icon(Icons.date_range),
+              onPressed: () => _selectDate(context),
+            )
           ]),
           Expanded(
             child: _buildList(),
@@ -122,5 +119,13 @@ class NewLogPageState extends State<NewLogPage> {
     setState(() {
       widget.sport.listExercises[index] = result;
     });
+  }
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(context: context, initialDate: valueDate, firstDate: DateTime(2015, 8), lastDate: DateTime(2101));
+    if (picked != null && picked != valueDate) {
+      setState(() {
+        valueDate = picked;
+      });
+    }
   }
 }

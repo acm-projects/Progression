@@ -1,11 +1,7 @@
 import 'dart:core';
-import 'package:draw_graph/draw_graph.dart';
-import 'package:draw_graph/models/feature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:progression/UI/graph.dart';
-import 'package:progression/util/exercise.dart';
-import 'package:progression/util/services/database.dart';
 import '../UI/background.dart';
 import '../UI/swiper.dart';
 import '../util/package_utils/globals.dart';
@@ -38,6 +34,9 @@ class _HomeTabState extends State<HomeTab> {
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: [
+
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+
             Container (
               width: 310,
               height: 80,
@@ -76,7 +75,7 @@ class _HomeTabState extends State<HomeTab> {
                         color: Colors.black,
                       ),
                   ),
-                  MakeSwiper(
+                  MakeSwiper (
                       steps: returnGraphs(),
 
                   ),
@@ -97,11 +96,6 @@ List<Widget> returnGraphs () {
       listWidget.add (
         GraphScreen(
           text: element.name,
-          features: [
-            Feature (
-              data: DatabaseService(uid: currentUser!.uid).returnList(element.name),
-            )
-          ]
         ),
       );
   }

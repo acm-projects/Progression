@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:progression/util/package_utils/globals.dart';
-import 'package:progression/util/services/database.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
 import '../UI/page_change_button.dart';
@@ -38,11 +38,16 @@ class LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+                  SizedBox(
+                    width: 150,
+                    height: 150,
+                    child: Image.asset('assets/graphics/logo.png'),
+                  ),
                   Container (
                     alignment: Alignment.center,
                     width: 350,
-                    height: 70,
+                    height: 60,
                     // decoration: BoxDecoration(
                     //     color: Colors.white,
                     //     borderRadius: const BorderRadius.all(Radius.circular(10))
@@ -63,7 +68,9 @@ class LoginPageState extends State<LoginPage> {
                   //
                   // ),
 
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
+
+
+                  const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
 
                   Container(
                     height: 450,
@@ -217,5 +224,8 @@ class LoginPageState extends State<LoginPage> {
             ]
         )
     );
+  }
+  Future<String> loadAsset() async {
+    return await rootBundle.loadString('assets/config.json');
   }
 }

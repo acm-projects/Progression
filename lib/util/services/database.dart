@@ -1,9 +1,10 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:progression/util/package_utils/globals.dart';
 import '../exercise.dart';
 import '../weightlifting.dart';
 import '../selected_exercise.dart';
-import '../weights.dart';
 import 'dart:math';
 
 class DatabaseService {
@@ -143,229 +144,31 @@ class DatabaseService {
 
   //gets the log based on a given date --> to be used with calendar
   List<Weightlifting?> calendarLog () {
-    List <Weightlifting?> weights = [];
+    List <Weightlifting?> weights;
     weights =  FirebaseFirestore.instance.collectionGroup('Weightlifting').snapshots()
         .map(_wLlistFromSnapshot) as List<Weightlifting?>;
     return weights;
   }
 
-  List<double> _DeadliftWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('deadLiftWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> DLWeights() {
-    List <double> weights = [];
-    Stream<List<double>> stream = usersCollection.snapshots()
-        .map(_DeadliftWeightsList);
-    stream.listen((weight1) {
-      for (int x = 0; x < weight1.length; x++){
-        weights.add(weight1[x]);
-      }
-    });
-    return weights;
-
-
-    /*for (int x = 0; x < weights.length; x++){
-      print(weights[x]);
+  Future<List<double>> weights (String key) async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("users").doc(uid).collection("Weightlifting").where(key, isNotEqualTo: 0).get();
+    var list = querySnapshot.docs;
+    print('This is the snapshot: ${querySnapshot.docs}');
+    List<int> list1 = [];
+    for (var element in list) {
+      list1.add(element.get('deadLiftWeight'));
     }
-    (List<Weight> weights1){
-      for (Weight weight in weights1){
-        weights.add(weight);
-      }
-    }*/
-  }
-
-  static Future<List<Year>> getYears() async {
-    Completer<List<int>> completer = Completer<List<int>>();
-
-    List<int> years = List<int>();
-
-    FirebaseDatabase.instance
-        .reference()
-        .child("year")
-        .once()
-        .then((DataSnapshot snapshot) {
-      //here i iterate and create the list of objects
-      Map<dynamic, dynamic> yearMap = snapshot.value;
-      yearMap.forEach((key, value) {
-        years.add(Year.fromJson(key, value));
-      });
-
-      completer.complete(years);
-    });
-
-    return completer.future;
-  }
-
-  List<double> _BackSquatWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('backSquatWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
+    print('This is the list: $list1');
+    final List<double> normalized = NormalizedData(list1);
     return normalized;
   }
 
-  List<double>  BSWeights (){
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_BackSquatWeightsList).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_BackSquatWeightsList) as List<double>;
-    return weights;*/
-  }
-
-  List<double> _HipThrustWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('hipThrustWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double>  HTWeights (){
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_HipThrustWeightsList).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_HipThrustWeightsList) as List<double>;
-    return weights;*/
-  }
-
-  List<double> _LegPressWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('legPressWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> LPWeights () {
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_LegPressWeightsList).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_LegPressWeightsList) as List<double>;
-    return weights;*/
-  }
-
-
-  List<double> _BenchPressWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('benchPressWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> BPWeights () {
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_BenchPressWeightsList).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_BenchPressWeightsList) as List<double>;
-    return weights;*/
-  }
-
-  List<double> _LateralPulldownWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('lateralPulldownWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> LateralPDWeights () {
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_LateralPulldownWeightsList).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_LateralPulldownWeightsList) as List<double>;
-    return weights;*/
-  }
-
-  List<double> _BicepCurlWeightsList(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('bicepCurlWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> BCWeights() {
-    List <double> weights = [];
-    Stream<List<double>> stream = usersCollection.snapshots()
-        .map(_BicepCurlWeightsList);
-    stream.listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_BicepCurlWeightsList) as List<double>;
-    return weights;*/
-  }
-
-  List<double> _TricepExtensionWeight(QuerySnapshot snapshot){
-    List <Weights?> weights = snapshot.docs.map((doc){
-      Weights(
-          date: doc.get('date') ?? DateTime.now(),
-          weight: doc.get('tricepExtensionWeight') ?? 0);
-    }).toList();
-    final List<double> normalized = NormalizedData(weights);
-    return normalized;
-  }
-
-  List<double> TEWeights() {
-    List <double> weights = [];
-    usersCollection.snapshots()
-        .map(_TricepExtensionWeight).listen((List<double> weights1) {
-      weights = weights1;
-    });
-    return weights;
-    /*List <double> weights = usersCollection.snapshots()
-        .map(_TricepExtensionWeight) as List<double>;
-    return weights;*/
-  }
-
-
-  List<double> NormalizedData (List<Weights?> weights) {
-    final List<int> array = [];
+  List<double> NormalizedData (List<int?> weights) {
+    final List<double> array = [];
     for(var i = 0 ; i < weights.length; i++) {
-      array.add(weights[i]!.weight);
+      array.add(weights[i]!.toDouble());
     }
-    final lower = array.reduce(min);
+    const lower = 0;
     final upper = array.reduce(max);
     final List<double> normalized = [];
 
@@ -377,33 +180,32 @@ class DatabaseService {
 
 
 
-  List<double> returnList (String key){
-    List<double> values = [];
+  Future<List<double>> returnList (String key) async {
     if(key == "Dead Lift"){
-      values = DLWeights();
+      return await weights("deadLiftWeight");
     }
     else if (key == "Back Squat"){
-      values = BSWeights();
+      return await weights("backSquatWeight");
     }
     else if (key == "Hip Thrust") {
-      values = HTWeights();
+      return await weights("hipThrustWeight");
     }
     else if (key == "Leg Press") {
-      values = LPWeights();
+      return await weights("legPressWeight");
     }
     else if (key == "Bench Press") {
-      values = BPWeights();
+      return await weights("benchPressWeight");
     }
-    else if (key == "Lateral Pulldown ") {
-      values = LateralPDWeights();
+    else if (key == "Lateral Pulldown") {
+      return await weights("lateralPulldownWeight");
     }
     else if (key == "Bicep Curl") {
-      values = BCWeights();
+      return await weights("bicepCurlWeight");
     }
     else if (key == "Tricep Extension") {
-      values = TEWeights();
+      return await weights("tricepExtensionWeight");
     }
-    return values;
+    return [];
   }
 
   //gets the log based on a given date --> to be used with calendar

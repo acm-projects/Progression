@@ -1,8 +1,5 @@
 import 'dart:collection';
 import 'package:table_calendar/table_calendar.dart';
-import '../services/database.dart';
-import '../weightlifting.dart';
-import './globals.dart';
 
 class Event {
   final String title;
@@ -18,14 +15,11 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
   hashCode: getHashCode,
 )..addAll(_kEventSource);
 
-List <Weightlifting?> logs = DatabaseService(uid: currentUser!.uid).calendarLog();
-final _kEventSource = Map.fromIterable(logs,
-    key: (item) => DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5),
-    value: (item) => List.generate(
-        item % 4 + 1, (index) => Event('Event $item | ${index + 1}')))
+final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
+        item % 2 + 1, (index) => Event('Workout $item')) }
   ..addAll({
     kToday: [
-
+      const Event('Workout'),
     ],
   });
 
