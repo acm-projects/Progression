@@ -40,7 +40,7 @@ class NewLogPageState extends State<NewLogPage> {
             textAlign: TextAlign.center,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 18.0),
+            padding: EdgeInsets.symmetric(vertical: 10.0),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             CustomTheme(
@@ -71,7 +71,7 @@ class NewLogPageState extends State<NewLogPage> {
             padding: EdgeInsets.symmetric(vertical: 15.0),
           ),
           PageChangeButton(
-            width: 140.0,
+            width: 100.0,
             height: 50.0,
             text: "Save",
             color: const Color.fromRGBO(253, 103, 4, 1.0),
@@ -82,7 +82,7 @@ class NewLogPageState extends State<NewLogPage> {
             },
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0),
           ),
         ]);
   }

@@ -21,7 +21,7 @@ class StatButton extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.headline5,
         ),
         color: Theme.of(context).colorScheme.surface,
         padding: EdgeInsets.zero,

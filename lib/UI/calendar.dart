@@ -156,6 +156,20 @@ class _CalendarState extends State<Calendar> {
                 setState(() => _calendarFormat = format);
               }
             },
+            calendarStyle: CalendarStyle(
+              todayDecoration: BoxDecoration (
+                  border: Border.all(
+                    color: const Color.fromRGBO(253, 103, 4, 1.0),
+                      width: 2
+                  ),
+                shape: BoxShape.circle
+              ),
+              selectedDecoration: const BoxDecoration (
+                  color: Color.fromRGBO(253, 103, 4, 1.0),
+                  shape: BoxShape.circle
+              ),
+              todayTextStyle: const TextStyle(fontSize: 21.0,),
+            ),
             daysOfWeekStyle: const DaysOfWeekStyle(
               decoration: BoxDecoration(
 
