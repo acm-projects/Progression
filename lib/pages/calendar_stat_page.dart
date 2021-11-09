@@ -11,7 +11,7 @@ class CalendarStatPage extends StatefulWidget {
       required this.exercise,
       this.sets = 2,
       this.reps = 15,
-      this.weight = 35})
+      this.weight = 40})
       : super(key: key);
   final String exercise;
   final int sets;
