@@ -4,7 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 class Event {
   final String title;
 
-  const Event(this.title);
+  Event(this.title);
 
   @override
   String toString() => title;
@@ -15,13 +15,14 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
   hashCode: getHashCode,
 )..addAll(_kEventSource);
 
-final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
-        item % 2 + 1, (index) => Event('Workout $item')) }
-  ..addAll({
-    kToday: [
-      const Event('Workout'),
-    ],
-  });
+final _kEventSource = {DateTime.utc(2021, 11, 5, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 3, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 1, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 4, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 10, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 11, 12, 5) : [Event("Workout")],
+  DateTime.utc(2021, 11, 14, 12, 5) : [Event("Workout")],
+};
 
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;

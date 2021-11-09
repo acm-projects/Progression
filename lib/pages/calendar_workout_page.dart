@@ -8,7 +8,7 @@ import 'calendar_stat_page.dart';
 
 class CalendarWorkoutPage extends StatefulWidget {
   const CalendarWorkoutPage({Key? key, required this.date, required this.entries}) : super(key: key);
-  final int date;
+  final String date;
   final List<String> entries;
   @override
   State createState() => CalendarWorkoutPageState();
@@ -38,7 +38,7 @@ class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
               ),
               child:
               Text(
-                widget.date.toString(),
+                widget.date,
                 style: Theme.of(context).textTheme.headline1,
                 textAlign: TextAlign.center,
               ),

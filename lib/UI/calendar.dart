@@ -1,9 +1,9 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:progression/pages/calendar_workout_page.dart';
+import 'package:progression/util/weightlifting.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 import '../util/package_utils/calendar_util.dart';
 
 class Calendar extends StatefulWidget {
@@ -180,7 +180,7 @@ class _CalendarState extends State<Calendar> {
                 weekendStyle: TextStyle(
                     fontSize: 15
                 )
-            )
+            ),
           ),
           const SizedBox(height: 1.0),
           Expanded(
@@ -201,6 +201,12 @@ class _CalendarState extends State<Calendar> {
                       ),
                       child: ListTile(
                         title: Text('${value[index]}'),
+                        onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CalendarWorkoutPage(entries: Weightlifting.listNames, date: "11-5-2021",)),
+                          );
+                        }
                       ),
                     );
                   },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:progression/pages/select_sport_page.dart';
 import 'package:progression/util/services/auth.dart';
 import '../UI/background.dart';
 import '../UI/text_entry_field.dart';
@@ -167,7 +168,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         error = 'No user found with that email and password';
                       }
                       else {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                          MaterialPageRoute(builder: (context) => const SelectSportPage()),
+                        );
                       }
                     }
                   },

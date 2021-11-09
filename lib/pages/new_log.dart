@@ -6,7 +6,6 @@ import 'package:progression/UI/stat_button.dart';
 import 'package:progression/pages/stat_entry_page.dart';
 import 'package:progression/util/package_utils/custom_theme.dart';
 import '../UI/page_change_button.dart';
-import '../UI/background.dart';
 import '../util/weightlifting.dart';
 import '../util/services/database.dart';
 import '../util/package_utils/globals.dart';
@@ -32,8 +31,6 @@ class NewLogPageState extends State<NewLogPage> {
 
 
         children: [
-          const Background(), //need help
-
           Text(
             'New Log',
             style: Theme.of(context).textTheme.headline1,
