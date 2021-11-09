@@ -86,17 +86,21 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-       - family: Heebo
-         fonts:
-           - asset: fonts/Heebo-SemiBold.ttf
-           - asset: fonts/Heebo-Black.ttf
-           - asset: fonts/Heebo-Bold.ttf
-           - asset: fonts/Heebo-ExtraBold.ttf
-           - asset: fonts/Heebo-ExtraLight.ttf
+#       - family: Heebo
+#         fonts:
+#           - asset: fonts/Heebo-SemiBold.ttf
+#           - asset: fonts/Heebo-Black.ttf
+#           - asset: fonts/Heebo-Bold.ttf
+#           - asset: fonts/Heebo-ExtraBold.ttf
+#           - asset: fonts/Heebo-ExtraLight.ttf
 
 #           - asset: fonts/Roboto-BlackItalic.ttf
 #             weight: 900
 #             style: italic
+
+      - family: BebasNeue
+        fonts:
+          - asset: fonts/BebasNeue-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

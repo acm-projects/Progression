@@ -21,9 +21,9 @@ class PageChangeButton extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.button,
           ),
-          color: color,
+          color: Colors.white,
           padding: EdgeInsets.zero,
         ),
     );

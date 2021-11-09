@@ -41,10 +41,10 @@ class _OptionSelectorState extends State<OptionSelector> {
             height: widget.height,
             width: widget.width,
             decoration: BoxDecoration(
-                color: selected ? Colors.white.withOpacity(1) : Colors.white.withOpacity(.6),
+                color: selected ? Colors.white.withOpacity(1) : Colors.white.withOpacity(.2),
                 borderRadius: const BorderRadius.all(Radius.circular(10))
             ),
-                child: Text(widget.text, style: Theme.of(context).textTheme.headline3, textAlign: TextAlign.center,)
+                child: Text(widget.text, style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.center,)
           )
         )
       ]

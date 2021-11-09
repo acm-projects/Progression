@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:progression/pages/calendar_workout_page.dart';
 import 'package:progression/pages/login_page.dart';
+import 'package:progression/pages/main_page.dart';
+import 'package:progression/pages/select_sport_page.dart';
 import 'package:progression/util/package_utils/globals.dart';
 import 'package:progression/util/services/auth.dart';
 import 'package:progression/util/user.dart';
@@ -49,37 +52,40 @@ class MyApp extends StatelessWidget {
 
               onSurface: Color.fromRGBO(255,255,255,1),
 
-              onSecondary: Color.fromRGBO(128, 128, 128, 1)
+              onSecondary: Color.fromRGBO(128, 128, 128, 1),
             ),
 
             // Define the default font family
-            fontFamily: 'Montserrat',
+            //fontFamily: 'Montserrat',
             // Define the default 'Text Theme'
             // Specifies certain height, and weights
             textTheme: TextTheme(
               // Header Font
-              headline1: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.surface),
+              headline1: TextStyle(fontFamily: 'BebasNeue', fontSize: 55.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.surface),
               // Smaller Header Font
-              headline2: const TextStyle(fontSize: 30.0, fontStyle: FontStyle.italic),
+              headline2: TextStyle(fontFamily: 'BebasNeue', fontSize: 35.0, color: Theme.of(context).colorScheme.primary),
               // Headline font that is underlined
-              headline3: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
+              headline3: TextStyle(fontFamily: 'BebasNeue', fontSize: 35, color: Color.fromRGBO(253, 103, 4, 1.0)),
 
-              headline4: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSecondary),
+              headline4: TextStyle(fontFamily: 'BebasNeue', fontSize: 30.0, color: Colors.black),
 
-              headline5: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromRGBO(253, 103, 4, 1.0)),
+              headline5: TextStyle(fontFamily: 'BebasNeue', fontSize: 40.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.surface),
+
+              headline6: TextStyle(fontFamily: 'BebasNeue', fontSize: 40.0, color: Color.fromRGBO(253, 103, 4, 1.0)),
 
               // A smaller body size
-              bodyText1: const TextStyle(fontSize: 24.0, fontFamily: 'Open Sans',),
+              bodyText1: const TextStyle(fontSize: 24.0, fontFamily: 'BebasNeue',),
               // Slightly larger body size
-              bodyText2: TextStyle(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface),
+              bodyText2: TextStyle( fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface),
 
-              button: TextStyle(fontSize: 32.0, fontFamily: 'Open Sans', color: Theme.of(context).colorScheme.onBackground),
+              button: TextStyle(fontSize: 32.0, fontFamily: 'BebasNeue', color: Colors.black),
             ),
           ),
 
           // The page your testing
           // Will eventually be the starting page
-          home: LoginPage(),
+          //home: LoginPage(),
+          home: LoginPage()
 
         )
     );

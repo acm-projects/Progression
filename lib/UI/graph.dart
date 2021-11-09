@@ -37,9 +37,9 @@ class _GraphScreenState extends State<GraphScreen> {
             const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
             Text(
               widget.text,
-              style: Theme.of(context).textTheme.headline3,
+              style: TextStyle(fontFamily: 'BebasNeue', fontSize: 35.0, color: Theme.of(context).colorScheme.primary),
             ),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            //const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
             FutureBuilder<List<double>>(
                 future: getData,
                 builder: (context, AsyncSnapshot<List<double>> snapshot) {

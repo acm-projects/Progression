@@ -45,7 +45,7 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             child:
                 Text(
                     'Which metrics do you want to track?',
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.headline5,
                     textAlign: TextAlign.center,
                   ),
             //color: Colors.white,

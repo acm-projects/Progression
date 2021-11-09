@@ -35,7 +35,7 @@ class _HomeTabState extends State<HomeTab> {
 
           children: [
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
 
             Container (
               width: 310,
@@ -48,12 +48,12 @@ class _HomeTabState extends State<HomeTab> {
               child:
               Text(
                 'Stat Page',
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline1,
                 textAlign: TextAlign.center,
               ),
             ),
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 15),),
 
             Expanded(
               child: Stack(

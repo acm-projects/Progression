@@ -36,7 +36,7 @@ class SelectSportPage extends StatelessWidget {
               child:
               Text(
                 'Which sport would you like to track?',
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline5,
                 textAlign: TextAlign.center,
               ),
               //color: Colors.white,
