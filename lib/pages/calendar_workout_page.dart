@@ -7,57 +7,57 @@ import '../UI/background.dart';
 import 'calendar_stat_page.dart';
 
 class CalendarWorkoutPage extends StatefulWidget {
-  const CalendarWorkoutPage({Key? key, required this.date, required this.entries}) : super(key: key);
+  const CalendarWorkoutPage(
+      {Key? key, required this.date, required this.entries})
+      : super(key: key);
   final String date;
   final List<String> entries;
+
   @override
   State createState() => CalendarWorkoutPageState();
 }
 
 class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
-
   @override
   Widget build(BuildContext context) {
-
-    return Stack(
-      alignment: Alignment.center,
-
-      children: [
-        const Background(),
-
-        Column(
-          children: [
-            const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),),
-
-            Container (
-              width: 370,
-              height: 70,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-              child:
-              Text(
-                widget.date,
-                style: Theme.of(context).textTheme.headline1,
-                textAlign: TextAlign.center,
-              ),
-              //color: Colors.white,
-
+    return Stack(alignment: Alignment.center, children: [
+      const Background(),
+      Column(
+        children: [
+          GestureDetector(
+            child: Container(
+              padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+              transformAlignment: Alignment.topLeft,
+              child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
             ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 7.0),),
-
-
-            Expanded(child: _buildList()),
-
-          ],
-
-        )
-      ]
-    );
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+          ),
+          Container(
+            width: 370,
+            height: 70,
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Text(
+              widget.date,
+              style: Theme.of(context).textTheme.headline1,
+              textAlign: TextAlign.center,
+            ),
+            //color: Colors.white,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 7.0),
+          ),
+          Expanded(child: _buildList()),
+        ],
+      )
+    ]);
   }
-
 
   Widget _buildList() {
     return ListView.separated(
@@ -71,8 +71,9 @@ class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      CalendarStatPage(exercise: widget.entries[index],)),
+                  builder: (context) => CalendarStatPage(
+                        exercise: widget.entries[index],
+                      )),
             );
           },
         );

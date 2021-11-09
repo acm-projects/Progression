@@ -6,117 +6,107 @@ import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 
 class CalendarStatPage extends StatefulWidget {
-  const CalendarStatPage({Key? key, required this.exercise, this.sets = 0, this.reps = 0, this.weight = 0}): super(key: key);
+  const CalendarStatPage(
+      {Key? key,
+      required this.exercise,
+      this.sets = 0,
+      this.reps = 0,
+      this.weight = 0})
+      : super(key: key);
   final String exercise;
   final int sets;
   final int reps;
   final int weight;
+
   @override
   State createState() => CalendarStatPageState();
 }
 
 class CalendarStatPageState extends State<CalendarStatPage> {
-
   @override
   Widget build(BuildContext context) {
-
-    return Stack(
-        alignment: Alignment.center,
-      children: [
-        const Background(),
-        Column(
-
-          children: [
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
-
-            Container (
-              width: 370,
-              height: 70,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-              child:
-              Text(
-                widget.exercise,
-                style: Theme.of(context).textTheme.headline1,
-                textAlign: TextAlign.center,
-              ),
-              //color: Colors.white,
-
-            ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 15.0),),
-
-
-            Text(
-              widget.sets.toString(),
-              style: Theme.of(context).textTheme.headline5,
-              textAlign: TextAlign.center,
-            ),
-
-            Text(
-              "Sets",
-              style: Theme.of(context).textTheme.headline2,
-              textAlign: TextAlign.center,
-            ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.0),
-            ),
-
-            Text(
-              widget.reps.toString(),
-              style: Theme.of(context).textTheme.headline5,
-              textAlign: TextAlign.center,
-            ),
-
-            Text(
-              "Reps",
-              style: Theme.of(context).textTheme.headline2,
-              textAlign: TextAlign.center,
-            ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.0),
-            ),
-
-            Text(
-              widget.weight.toString(),
-              style: Theme.of(context).textTheme.headline5,
-              textAlign: TextAlign.center,
-            ),
-
-            Text(
-              "Weight",
-              style: Theme.of(context).textTheme.headline2,
-              textAlign: TextAlign.center,
-            ),
-
-            const Spacer(),
-
-            PageChangeButton(
-              width: 140.0,
-              height: 50.0,
-              color: Theme.of(context).colorScheme.onPrimary,
-              text: "Exercises",
-              onPressed: () {
-                Navigator.pop(context); // temp holder for testing
-              },
-            ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-            ),
-
-          ]
-
-
-
-        )
-      ]
-    );
+    return Stack(alignment: Alignment.center, children: [
+      const Background(),
+      Column(children: [
+        GestureDetector(
+          child: Container(
+            padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+            transformAlignment: Alignment.topLeft,
+            child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+        ),
+        Container(
+          width: 370,
+          height: 70,
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: Text(
+            widget.exercise,
+            style: Theme.of(context).textTheme.headline1,
+            textAlign: TextAlign.center,
+          ),
+          //color: Colors.white,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 15.0),
+        ),
+        Text(
+          widget.sets.toString(),
+          style: Theme.of(context).textTheme.headline5,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          "Sets",
+          style: Theme.of(context).textTheme.headline2,
+          textAlign: TextAlign.center,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 12.0),
+        ),
+        Text(
+          widget.reps.toString(),
+          style: Theme.of(context).textTheme.headline5,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          "Reps",
+          style: Theme.of(context).textTheme.headline2,
+          textAlign: TextAlign.center,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 12.0),
+        ),
+        Text(
+          widget.weight.toString(),
+          style: Theme.of(context).textTheme.headline5,
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          "Weight",
+          style: Theme.of(context).textTheme.headline2,
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(),
+        PageChangeButton(
+          width: 140.0,
+          height: 50.0,
+          color: Theme.of(context).colorScheme.onPrimary,
+          text: "Exercises",
+          onPressed: () {
+            Navigator.pop(context); // temp holder for testing
+          },
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.0),
+        ),
+      ])
+    ]);
   }
-
 }
