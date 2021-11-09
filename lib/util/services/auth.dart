@@ -26,9 +26,9 @@ class AuthService {
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
-      currentUser = user;
-      return _userFromFirebaseUser(user);
+      currentUser = result.user;
+      currentUserSelf = Users(uid: currentUser!.uid);
+      return _userFromFirebaseUser(currentUser);
     } catch (e) {
       print(e.toString());
       return null;
@@ -39,10 +39,9 @@ class AuthService {
   Future registerWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
-
-      //create a new document for the user with the uid
-      return _userFromFirebaseUser(user);
+      currentUser = result.user;
+      currentUserSelf = Users(uid: currentUser!.uid);
+      return _userFromFirebaseUser(currentUser);
     } catch (e) {
       print(e.toString());
       return null;

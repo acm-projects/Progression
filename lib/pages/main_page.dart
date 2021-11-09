@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
 import '../tabs/all_tabs.dart';
 import '../util/package_utils/globals.dart';
-import 'login_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -52,7 +52,7 @@ Widget logOut (BuildContext context) {
     child: CupertinoButton(
         child: const Text(''),
         onPressed: () {
-          Navigator.pop(context, () => LoginPage());
+          Restart.restartApp();
         }),
   );
 }

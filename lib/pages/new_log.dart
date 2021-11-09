@@ -73,7 +73,7 @@ class NewLogPageState extends State<NewLogPage> {
             text: "Save",
             color: const Color.fromRGBO(253, 103, 4, 1.0),
             onPressed: () async {
-              await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
+              await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", valueDate, widget.sport.listExercises);
 
               tabController.index = 0;
             },

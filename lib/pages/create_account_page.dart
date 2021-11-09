@@ -37,7 +37,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
             GestureDetector(
               child: Container(
-                padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, top: 45.0),
                 transformAlignment: Alignment.topLeft,
                 child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
               ),
@@ -123,7 +123,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 20.0),),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 30.0),),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -137,12 +137,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
                       ),
                     ),
-                    const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
-                    Text(
-                      'or',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    const Padding(padding: EdgeInsets.symmetric(horizontal: 4.0)),
                     SizedBox(
                       width: 160,
                       height: 2,
@@ -154,7 +148,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   ],
                 ),
 
-                const Padding(padding: EdgeInsets.symmetric(vertical: 20.0)),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 30.0)),
 
                 PageChangeButton(
                   width: 140.0,

@@ -20,28 +20,33 @@ class CalendarWorkoutPage extends StatefulWidget {
 class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: Alignment.center, children: [
+    return Stack(
+        children: <Widget>[
       const Background(),
+
+      GestureDetector(
+        child: Container(
+          padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+          transformAlignment: Alignment.topLeft,
+          child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
+        ),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
+
       Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GestureDetector(
-            child: Container(
-              padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-              transformAlignment: Alignment.topLeft,
-              child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
+            padding: EdgeInsets.symmetric(vertical: 30.0),
           ),
           Container(
             width: 370,
             height: 70,
             decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Color.fromRGBO(253, 103, 4, 1.0),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Text(
               widget.date,

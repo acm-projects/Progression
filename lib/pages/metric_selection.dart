@@ -39,7 +39,7 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
             width: 370,
             height: 100,
               decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Color.fromRGBO(253, 103, 4, 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(10))
               ),
             child:

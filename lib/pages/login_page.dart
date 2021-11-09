@@ -81,7 +81,7 @@ class LoginPageState extends State<LoginPage> {
                       children: [
                         Text(
                           error,
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: TextStyle(fontSize: 14.0, color: Theme.of(context).colorScheme.onBackground, ),
                         ),
                         SizedBox(
                           height: 42,

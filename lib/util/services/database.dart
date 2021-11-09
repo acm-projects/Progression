@@ -155,7 +155,7 @@ class DatabaseService {
     print('This is the snapshot: ${querySnapshot.docs}');
     List<int> list1 = [];
     for (var element in list) {
-      list1.add(element.get('deadLiftWeight'));
+      list1.add(element.get(key));
     }
     print('This is the list: $list1');
     final List<double> normalized = normalizedData(list1);
