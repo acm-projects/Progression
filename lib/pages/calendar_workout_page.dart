@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:progression/UI/option_selector.dart';
 import 'package:progression/UI/stat_button.dart';
-import 'package:progression/pages/stat_entry_page.dart';
-import '../UI/text_entry_field.dart';
-import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 import 'calendar_stat_page.dart';
 
 class CalendarWorkoutPage extends StatefulWidget {
-  CalendarWorkoutPage({Key? key, required this.date, required this.entries}) : super(key: key);
+  const CalendarWorkoutPage({Key? key, required this.date, required this.entries}) : super(key: key);
   final int date;
   final List<String> entries;
   @override
@@ -37,9 +32,9 @@ class CalendarWorkoutPageState extends State<CalendarWorkoutPage> {
             Container (
               width: 370,
               height: 70,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  borderRadius: BorderRadius.all(Radius.circular(10))
               ),
               child:
               Text(

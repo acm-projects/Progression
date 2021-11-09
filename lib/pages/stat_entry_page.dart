@@ -151,6 +151,7 @@ class StateEntryPageState extends State<StatEntryPage> {
             width: 140.0,
             height: 50.0,
             text: "Save",
+            color: Theme.of(context).colorScheme.onPrimary,
             onPressed: () {
               Navigator.pop(context, Exercise(
                 name: widget.exercise.name,

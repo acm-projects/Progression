@@ -3,6 +3,7 @@ import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 class MakeSwiper extends StatelessWidget {
   const MakeSwiper({Key? key, required this.steps}) : super(key: key);
+
   final List<Widget> steps;
 
   @override
@@ -13,7 +14,7 @@ class MakeSwiper extends StatelessWidget {
         alignment: WrapAlignment.center,
         children: [
           SizedBox(
-            height: 550,
+            height: 600,
             width: 500,
 
             child: Swiper(
@@ -25,7 +26,10 @@ class MakeSwiper extends StatelessWidget {
               control: const SwiperControl(),
               autoplay: false,
               scrollDirection: Axis.horizontal,
-              pagination: const SwiperPagination(),
+              pagination: const SwiperPagination(
+                builder: DotSwiperPaginationBuilder(
+                color: Colors.grey, activeColor: Color.fromRGBO(253, 103, 4, 1.0),
+              ),),
 
             ),
           ),

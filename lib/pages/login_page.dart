@@ -123,6 +123,7 @@ class LoginPageState extends State<LoginPage> {
                           // width: 253.0,
                           // height: 42.0,
                           text: "Sign In",
+                          color: Theme.of(context).colorScheme.onPrimary,
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               dynamic result = await _auth.signInWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);
@@ -178,6 +179,7 @@ class LoginPageState extends State<LoginPage> {
                           // width: 253.0,
                           // height: 42.0,
                           text: "Create",
+                          color: Theme.of(context).colorScheme.onPrimary,
                           onPressed: () {
                             Navigator.push(
                               context,

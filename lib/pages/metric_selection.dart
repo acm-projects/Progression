@@ -67,6 +67,7 @@ class MetricSelectionPageState extends State<MetricSelectionPage> {
           width: 140.0,
           height: 50.0,
           text: "Select",
+          color: Theme.of(context).colorScheme.onPrimary,
           onPressed: () {
             Navigator.push(
               context,

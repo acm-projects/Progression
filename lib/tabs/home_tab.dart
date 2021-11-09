@@ -35,36 +35,25 @@ class _HomeTabState extends State<HomeTab> {
 
           children: [
 
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 30)),
 
             Container (
               width: 310,
               height: 80,
+              alignment: Alignment.center,
               decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Color.fromRGBO(253, 103, 4, 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(10))
               ),
               child:
               Text(
                 'Stat Page',
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
-              //color: Colors.white,
-
             ),
 
-            // SizedBox(
-            //   width: MediaQuery.of(context).size.width,
-            //   height: 2,
-            //   child: DecoratedBox(
-            //     decoration: BoxDecoration(
-            //       color: Theme.of(context).colorScheme.onBackground,
-            //     ),
-            //   ),
-            // ),
-
-            const Padding(padding: EdgeInsets.symmetric(vertical: 15),),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 5),),
 
             Expanded(
               child: Stack(

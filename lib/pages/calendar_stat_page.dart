@@ -33,9 +33,9 @@ class CalendarStatPageState extends State<CalendarStatPage> {
             Container (
               width: 370,
               height: 70,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  borderRadius: BorderRadius.all(Radius.circular(10))
               ),
               child:
               Text(
@@ -99,6 +99,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
             PageChangeButton(
               width: 140.0,
               height: 50.0,
+              color: Theme.of(context).colorScheme.onPrimary,
               text: "Exercises",
               onPressed: () {
                 Navigator.pop(context); // temp holder for testing

@@ -34,7 +34,12 @@ class _GraphScreenState extends State<GraphScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(widget.text),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            Text(
+              widget.text,
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
             FutureBuilder<List<double>>(
                 future: getData,
                 builder: (context, AsyncSnapshot<List<double>> snapshot) {
@@ -43,7 +48,7 @@ class _GraphScreenState extends State<GraphScreen> {
                       return const Text('No Data');
                     } else {
                       return SizedBox(
-                        height: 475,
+                        height: 450,
                         width: 500,
                         child: LineGraph(
                           features: [

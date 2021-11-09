@@ -159,6 +159,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   width: 140.0,
                   height: 50.0,
                   text: "Create",
+                  color: Theme.of(context).colorScheme.onPrimary,
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(widget.emailText.text, widget.passwordText.text);

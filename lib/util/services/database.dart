@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:progression/util/package_utils/globals.dart';
 import '../exercise.dart';
@@ -159,11 +158,11 @@ class DatabaseService {
       list1.add(element.get('deadLiftWeight'));
     }
     print('This is the list: $list1');
-    final List<double> normalized = NormalizedData(list1);
+    final List<double> normalized = normalizedData(list1);
     return normalized;
   }
 
-  List<double> NormalizedData (List<int?> weights) {
+  List<double> normalizedData (List<int?> weights) {
     final List<double> array = [];
     for(var i = 0 ; i < weights.length; i++) {
       array.add(weights[i]!.toDouble());
@@ -206,13 +205,6 @@ class DatabaseService {
       return await weights("tricepExtensionWeight");
     }
     return [];
-  }
-
-  //gets the log based on a given date --> to be used with calendar
-  Stream<List<Weightlifting?>> CalendarLog (int day, int month, int year) {
-    return FirebaseFirestore.instance.collectionGroup('Weightlifting').where(
-        'date', isEqualTo: DateTime.utc(year, month, day)).snapshots()
-        .map(_wLlistFromSnapshot);
   }
 
 }

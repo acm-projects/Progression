@@ -28,9 +28,9 @@ class SelectSportPage extends StatelessWidget {
             Container (
               width: 370,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  borderRadius: BorderRadius.all(Radius.circular(10))
               ),
               child:
               Text(
@@ -49,6 +49,7 @@ class SelectSportPage extends StatelessWidget {
               height: 50.0,
               width: 140.0,
               text: "Select",
+              color: Theme.of(context).colorScheme.onPrimary,
               onPressed: () {
                 Navigator.push(
                   context,

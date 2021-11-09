@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progression/UI/stat_button.dart';
 import 'package:progression/pages/stat_entry_page.dart';
+import 'package:progression/util/package_utils/custom_theme.dart';
 import '../UI/page_change_button.dart';
 import '../UI/background.dart';
 import '../util/weightlifting.dart';
@@ -42,19 +43,21 @@ class NewLogPageState extends State<NewLogPage> {
             padding: EdgeInsets.symmetric(vertical: 18.0),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0),
-                child: Text("${valueDate.day.toString().padLeft(2,'0')}-${valueDate.month.toString().padLeft(2,'0')}-${valueDate.year}", style: Theme.of(context).textTheme.button,),
+            CustomTheme(
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0),
+                  child: Text("${valueDate.day.toString().padLeft(2,'0')}-${valueDate.month.toString().padLeft(2,'0')}-${valueDate.year}", style: Theme.of(context).textTheme.headline4,),
+                ),
+                decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        width: 2.5,
+                      ),
+                    )),
+                width: 270,
               ),
-              decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      width: 2.5,
-                    ),
-                  )),
-              width: 270,
             ),
             ElevatedButton(
               child: const Icon(Icons.date_range),
@@ -71,6 +74,7 @@ class NewLogPageState extends State<NewLogPage> {
             width: 140.0,
             height: 50.0,
             text: "Save",
+            color: const Color.fromRGBO(253, 103, 4, 1.0),
             onPressed: () async {
               await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", DateTime.now(), widget.sport.listExercises);
 
@@ -120,9 +124,34 @@ class NewLogPageState extends State<NewLogPage> {
       widget.sport.listExercises[index] = result;
     });
   }
+
+
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(context: context, initialDate: valueDate, firstDate: DateTime(2015, 8), lastDate: DateTime(2101));
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: valueDate,
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2030, 1),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Color.fromRGBO(253, 103, 4, 1.0), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Color.fromRGBO(128, 128, 128, 1), // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.red, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
     if (picked != null && picked != valueDate) {
+
       setState(() {
         valueDate = picked;
       });

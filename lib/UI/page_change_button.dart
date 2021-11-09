@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class PageChangeButton extends StatelessWidget {
   const PageChangeButton(
-      {Key? key, this.width = 253.0, this.height = 50.0, this.text = 'Add', required this.onPressed }) : super(key: key);
+      {Key? key, this.width = 253.0, this.height = 50.0, this.text = 'Add', required this.onPressed, required this.color }) : super(key: key);
 
-
+  final Color color;
   final double width;
   final double height;
   final String text;
@@ -23,7 +23,7 @@ class PageChangeButton extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText2,
           ),
-          color: Theme.of(context).colorScheme.onPrimary,
+          color: color,
           padding: EdgeInsets.zero,
         ),
     );
