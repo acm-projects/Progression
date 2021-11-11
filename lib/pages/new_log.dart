@@ -71,7 +71,7 @@ class NewLogPageState extends State<NewLogPage> {
             width: 100.0,
             height: 50.0,
             text: "Save",
-            color: Color.fromRGBO(253, 103, 4, 1.0),
+            color: const Color.fromRGBO(253, 103, 4, 1.0),
             onPressed: () async {
               await DatabaseService(uid: currentUser!.uid).newWeightliftingLog("Weightlifting", valueDate, widget.sport.listExercises);
 

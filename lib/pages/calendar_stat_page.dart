@@ -26,6 +26,7 @@ class CalendarStatPageState extends State<CalendarStatPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
         children: <Widget>[
       const Background(),
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:restart_app/restart_app.dart';
+import 'package:progression/UI/log_out.dart';
 import '../tabs/all_tabs.dart';
 import '../util/package_utils/globals.dart';
 
@@ -38,21 +38,11 @@ class _MainPage extends State<MainPage> {
               const HomeTab(),
               const CalendarTab(),
               const NewLogTab(),
-              logOut(context)
+              const LogOut(),
             ];
             return _list[index];
           },
       ),
     );
   }
-}
-
-Widget logOut (BuildContext context) {
-  return Center(
-    child: CupertinoButton(
-        child: const Text(''),
-        onPressed: () {
-          Restart.restartApp();
-        }),
-  );
 }
