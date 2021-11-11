@@ -44,7 +44,7 @@ class NewLogPageState extends State<NewLogPage> {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0),
-                  child: Text("${valueDate.day.toString().padLeft(2,'0')}-${valueDate.month.toString().padLeft(2,'0')}-${valueDate.year}", style: Theme.of(context).textTheme.headline4,),
+                  child: Text("${valueDate.day.toString().padLeft(2,'0')}-${valueDate.month.toString().padLeft(2,'0')}-${valueDate.year}", style: Theme.of(context).textTheme.headline3,),
                 ),
                 decoration: BoxDecoration(
                     border: Border(
