@@ -149,7 +149,7 @@ class DatabaseService {
     return weights;
   }
 
-  Future<List<double>> weights (String key) async {
+  Future<List<dynamic>> weights (String key) async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection("users").doc(uid).collection("Weightlifting").where(key, isNotEqualTo: 0).get();
     var list = querySnapshot.docs;
     print('This is the snapshot: ${querySnapshot.docs}');
@@ -158,28 +158,61 @@ class DatabaseService {
       list1.add(element.get(key));
     }
     print('This is the list: $list1');
-    final List<double> normalized = normalizedData(list1);
-    return normalized;
+      final List<dynamic> normalized = normalizedData(list1);
+      return normalized;
+
   }
 
-  List<double> normalizedData (List<int?> weights) {
+  List<dynamic> normalizedData (List<int?> weights) {
     final List<int> array = [];
     for(var i = 0 ; i < weights.length; i++) {
       array.add(weights[i]!);
     }
-    const lower = 0;
+    final lower = array.reduce(min);
+    print("$lower");
     final upper = array.reduce(max);
+    print("$upper");
     final List<double> normalized = [];
+
 
     for(var i = 0 ; i < array.length; i++){
       normalized.add((array[i] - lower) / (upper - lower));
     }
-    return normalized;
+    print("$normalized");
+
+    for(var i = 0 ; i < weights.length; i++) {
+      array.add(weights[i]!);
+    }
+    final List<String> array1 = [];
+    final lower1 = array.reduce(min);
+    final upper1 = array.reduce(max);
+
+    for (var i = 0; i < 6; i++) {
+      array1.add((lower1 + (.2 * i * (upper1 - lower1))).toString());
+    }
+    return [normalized, array1];
+  }
+
+  List<String> labelY (List<int?> weights) {
+
+    final List<int> array = [];
+    for(var i = 0 ; i < weights.length; i++) {
+      array.add(weights[i]!);
+    }
+    final List<String> array1 = [];
+    final lower = array.reduce(min);
+    final upper = array.reduce(max);
+
+    for (var i = 0; i < 6; i++) {
+      array1.add((lower + (.2 * i * (upper - lower))).toInt().toString());
+    }
+
+    return array1;
   }
 
 
 
-  Future<List<double>> returnList (String key) async {
+  Future<List<dynamic>> returnList (String key) async {
     if(key == "Dead Lift"){
       return await weights("deadLiftWeight");
     }

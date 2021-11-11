@@ -14,7 +14,7 @@ class GraphScreen extends StatefulWidget {
 }
 
 class _GraphScreenState extends State<GraphScreen> {
-  late Future<List<double>> getData;
+  late Future<List<dynamic>> getData;
 
   @override
   void initState() {
@@ -40,9 +40,9 @@ class _GraphScreenState extends State<GraphScreen> {
               style: TextStyle(fontFamily: 'BebasNeue', fontSize: 35.0, color: Theme.of(context).colorScheme.primary),
             ),
             //const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
-            FutureBuilder<List<double>>(
+            FutureBuilder<List<dynamic>>(
                 future: getData,
-                builder: (context, AsyncSnapshot<List<double>> snapshot) {
+                builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.data == null) {
                       return const Text('No Data');
@@ -53,18 +53,26 @@ class _GraphScreenState extends State<GraphScreen> {
                         child: LineGraph(
                           features: [
                             Feature(
-                              data: snapshot.data ?? [0, .4, .3, .6],
+                              data: snapshot.data![0],
                             ),
                           ],
                           size: const Size(500, 500),
                           labelX: const [
-                            '11/1',
-                            '11/05',
-                            '11/10',
-                            '11/15',
-                            '11/20'
+                            '1',
+                            '3',
+                            '4',
+                            '5',
+                            '6',
+                            '7',
+                            '8',
+                            '10',
+                            '12',
+                            '13',
+                            '14',
+                            '16',
+                            '17',
                           ],
-                          labelY: const ['50', '100', '150', '200', '250'],
+                          labelY: snapshot.data![1],
                           showDescription: false,
                           graphColor: Colors.black87,
                         ),
@@ -80,7 +88,7 @@ class _GraphScreenState extends State<GraphScreen> {
     ));
   }
 
-  Future<List<double>> returnData() async {
+  Future<List<dynamic>> returnData() async {
     return await DatabaseService(uid: currentUser!.uid).returnList(widget.text);
   }
 }
