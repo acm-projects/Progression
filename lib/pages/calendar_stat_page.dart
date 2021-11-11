@@ -30,18 +30,8 @@ class CalendarStatPageState extends State<CalendarStatPage> {
         children: <Widget>[
       const Background(),
 
-      GestureDetector(
-        child: Container(
-          padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-          transformAlignment: Alignment.topLeft,
-          child: const Icon(CupertinoIcons.arrow_left_circle, size: 45),
-        ),
-        onTap: () {
-          Navigator.pop(context);
-        },
-      ),
-
       Column(
+        mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 

@@ -55,7 +55,9 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Sets', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.center),
+                Text('Sets',
+                    style: TextStyle(fontFamily: 'BebasNeue', fontSize: 30.0, color: Color.fromRGBO(253, 103, 4, 1.0), decoration: TextDecoration.none),
+                    textAlign: TextAlign.center),
                 color: Theme.of(context).colorScheme.background,
 
               ),
@@ -88,7 +90,9 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Reps', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.center),
+                Text('Reps',
+                    style: TextStyle(fontFamily: 'BebasNeue', fontSize: 30.0, color: Color.fromRGBO(253, 103, 4, 1.0), decoration: TextDecoration.none),
+                    textAlign: TextAlign.center),
                 color: Theme.of(context).colorScheme.background,
 
               ),
@@ -122,7 +126,9 @@ class StateEntryPageState extends State<StatEntryPage> {
               height: 30,
               child: Container(
                 child:
-                Text('Weight', style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.left),
+                Text('Weight',
+                    style: TextStyle(fontFamily: 'BebasNeue', fontSize: 30.0, color: Color.fromRGBO(253, 103, 4, 1.0), decoration: TextDecoration.none),
+                    textAlign: TextAlign.left),
                 color: Theme.of(context).colorScheme.background,
 
               ),

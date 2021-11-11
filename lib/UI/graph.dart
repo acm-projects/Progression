@@ -64,7 +64,7 @@ class _GraphScreenState extends State<GraphScreen> {
                             '11/15',
                             '11/20'
                           ],
-                          labelY: const ['0', '50', '100', '150', '200'],
+                          labelY: const ['50', '100', '150', '200', '250'],
                           showDescription: false,
                           graphColor: Colors.black87,
                         ),

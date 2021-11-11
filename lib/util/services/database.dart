@@ -163,9 +163,9 @@ class DatabaseService {
   }
 
   List<double> normalizedData (List<int?> weights) {
-    final List<double> array = [];
+    final List<int> array = [];
     for(var i = 0 ; i < weights.length; i++) {
-      array.add(weights[i]!.toDouble());
+      array.add(weights[i]!);
     }
     const lower = 0;
     final upper = array.reduce(max);
